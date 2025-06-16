@@ -1,0 +1,71 @@
+/* menu */
+
+.display { display: flex; flex-direction: column; gap: 1em; }
+.selector { display: flex; flex-direction: row; gap: 8px; user-select: none;}
+.divisor { width: 100%; height: 1px; background-color: #d8dade; margin: 1em 0; opacity: 0.05; }
+.opciones { flex: 1; display: flex; flex-direction: column; align-items: left; justify-content: center; gap: 14px ; }
+.opcion { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8em; width: 100%; height: 40px; }
+.descripcion { display: flex; flex-direction: row; font-size: 1rem; color: #d8dade; user-select: none;}
+
+/* botones de interfaz */
+
+.iconoUI { width: 1rem; height: 1rem; color: #d8dade; }
+
+/* botones de categoria */
+
+.wrapperCAT { position: relative; display: inline-block; }
+.accionesCAT { position: absolute; top: 0; bottom: 0; right: 0; display: flex; align-items: center; gap: .25em; padding: .5em; user-select: none; }
+.botonCAT { position: relative; display: inline-flex; align-items: center; justify-content: flex-start; gap: .5em; padding: .5em .8em; overflow: hidden; border: 1px solid #1b1c1c; border-radius: 8px; background: #3c3c3c; color: #d8dade; font-size: 1rem; cursor: pointer; transition: background 0.2s ease, transform 0.05s ease; width: 100% }
+.botonCAT:hover { background: #4d4c4c }
+.botonCAT:active { transform: scale(0.95) }
+.botonCAT::after { content: ''; position: absolute; top: 0; right: 0; width: 3.5em; height: 100%; background: linear-gradient(to right, transparent, #3c3c3c) }
+.emojiCAT { display: inline-block; min-width: 1.2em; flex-shrink: 0; text-align: center; font-size: 0.5rem }
+.labelCAT { display: inline-block; white-space: nowrap; position: relative; max-width: 100% }
+
+/* botones emoji on hover */
+
+.iconoCAT { cursor: pointer; font-size: 0.5rem; background: #1b1c1c99; border-radius: 4px; padding: .5em .5em }
+
+/* inputs */
+
+.inputTXT { width: 100%; padding: .5em .8em; border: 1px solid #1b1c1c; border-radius: 8px; background: #3c3c3c; color: #d8dade; font-size: 1rem; cursor: pointer; text-align: center; }
+
+/* formularios */
+
+.renglon { display: flex; flex-direction: row; gap: 1em; padding: 0.5em; justify-content: center;}
+.pagina { display:flex; flex-direction: column; gap: 1em; align-items: center; justify-content: center; }
+
+/* vista principal */
+
+.x { display: flex; flex-direction: row; gap: 1em; }
+.grid { display: flex; flex-direction: column; gap: 1em; width: fit-content; align-self: start; }
+.bot { display: flex; flex-direction: row; gap: 1em; padding: 1em; }
+
+/* csvTabla */
+
+.tabla-container table { border-collapse: collapse; table-layout: auto; }
+.tabla-wrapper { display: flex; align-items: stretch; overflow: hidden; border-radius: 8px; background: #3c3c3c; }
+.tabla-container { flex: none; overflow-x: auto; }
+table { border: 2px solid #1b1c1c; width: max-content; color: #d8dade; font-size: 0.9rem; }
+th, td { width: 160px; padding: 6px 12px; border: 1px solid #1b1c1c; text-align: left; white-space: normal; overflow-wrap: break-word; word-break: break-word; word-wrap: break-word; background: #3c3c3c; color: #d8dade; }
+th { background: #2b2c2c; color: #d8dade; cursor: pointer; position: relative; padding-right: 1.2em; font-weight: normal; }
+th:hover { background: #3d3e3e; }
+.orden-indicador { position: absolute; right: 4px; }
+.fila-wrapper { position: relative; }
+.acciones-header { background: #1b1c1c; color: #d8dade; position: relative; width: 0; padding: 0; overflow: visible; visibility: hidden; }
+.acciones-cell { background: #1b1c1c; color: #d8dade; position: relative; width: 0; padding: 0; overflow: visible; visibility: hidden; }
+.fila-wrapper:hover .acciones-cell { visibility: visible; }
+.acciones-float { position: absolute; top: 50%; right: 0.5em; transform: translateY(-50%); display: flex; gap: 0.25em; background: #1b1c1c99; border-radius: 4px; padding: 2px 4px; pointer-events: none; z-index: 10; user-select: none;}
+.icono-fila { pointer-events: auto; cursor: pointer; }
+.tabla-nav { width: 1.25em; background: #1b1c1c; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; }
+.tabla-nav:hover { background: #2b2c2c; }
+.tabla-nav span { color: #d8dade; font-weight: bold; }
+td { height: 4.2em; max-height: 4.2em; overflow: hidden; text-overflow: ellipsis; padding: 6px 12px; box-sizing: border-box; vertical-align: top; }
+td > span { display: -webkit-box; line-clamp: 3; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+
+
+/* csvBuscar */
+
+.buscar { width: 100%; padding: .5em .8em; font-size: 1rem; border: 1px solid #1b1c1c; border-radius: 8px; background: #3c3c3c; color: #d8dade; transition: background 0.2s, border-color 0.2s; }
+.buscar:hover { background: #4d4c4c; }
+.buscar:focus { background: #4d4c4c; border-color: #4C9AFF; outline: none; }

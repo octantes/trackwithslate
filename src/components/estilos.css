@@ -1,0 +1,52 @@
+:root {
+  --clarooscuro-a: #1b1c1c;
+  --clarooscuro-b: #2b2c2c;
+  --clarooscuro-c: #3c3c3c;
+  --clarooscuro-d: #4d4c4c;
+  --claroscuro-e: #aaabac;
+  --claroscuro-f: #d8dade;
+}
+
+.botonUI
+{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5em .8em;
+  overflow: hidden;
+  border: 0px;
+  border-radius: 50px;
+  background: var(--clarooscuro-c);
+  color:  var(--claroscuro-f);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.05s ease;
+}
+.botonUI:hover { background: var(--clarooscuro-d); }
+.botonUI:active { transform: scale(0.95); }
+
+.iconoUI
+{
+  width: 1rem;
+  height: 1rem;
+  color: var(--claroscuro-f);
+}
+
+.inputWRP { position: relative; display: inline-block; width: fit-content; }
+.input
+{
+  width: 160px;
+  padding: .5em .8em;
+  padding-right: 2em;
+  border: 1px solid #1b1c1c;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #d8dade;
+  font-size: 1rem;
+  outline: none;
+  appearance: none;
+  transition: background 0.2s,
+  border-color 0.2s;
+}
+.input:hover { background: #4d4c4c; }
+.input:focus { background: #4d4c4c; border-color: #4C9AFF; }
