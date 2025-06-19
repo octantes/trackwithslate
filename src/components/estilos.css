@@ -7,6 +7,11 @@
   --claroscuro-f: #d8dade;
 }
 
+.display { display: flex; flex-direction: column; gap: 1em; }
+.divisor { width: 100%; height: 1px; background-color: #d8dade; margin: 1em 0; opacity: 0.05; }
+
+/* botones */
+
 .botonUI
 {
   display: inline-flex;
@@ -24,29 +29,48 @@
 }
 .botonUI:hover { background: var(--clarooscuro-d); }
 .botonUI:active { transform: scale(0.95); }
+.iconoUI { width: 1rem; height: 1rem; color: var(--claroscuro-f); }
 
-.iconoUI
-{
-  width: 1rem;
-  height: 1rem;
-  color: var(--claroscuro-f);
-}
+/* inputs */
 
-.inputWRP { position: relative; display: inline-block; width: fit-content; }
 .input
 {
   width: 160px;
   padding: .5em .8em;
   padding-right: 2em;
-  border: 1px solid #1b1c1c;
+  border: 1px solid var(--clarooscuro-a);
   border-radius: 8px;
-  background: #3c3c3c;
-  color: #d8dade;
+  background: var(--clarooscuro-c);
+  color: var(--clarooscuro-f);
   font-size: 1rem;
   outline: none;
   appearance: none;
   transition: background 0.2s,
   border-color 0.2s;
 }
-.input:hover { background: #4d4c4c; }
-.input:focus { background: #4d4c4c; border-color: #4C9AFF; }
+.input:hover { background: var(--clarooscuro-d); }
+.input:focus { background: var(--clarooscuro-d); border-color: #4C9AFF; }
+.inputWrapper { position: relative; display: inline-block; width: fit-content; }
+
+/* renglones */
+
+.renglon
+{
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  padding: 0.5em;
+  justify-content: center;
+}
+
+/* formularios */
+
+.formulario { display: flex; flex-direction: column; gap: 1rem; }
+.campo { display: flex; flex-direction: column; }
+.inputNOMBRE {}
+
+/* vistas */
+
+.opciones { flex: 1; display: flex; flex-direction: column; align-items: left; justify-content: center; gap: 14px ; }
+.opcion { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8em; width: 100%; height: 40px; }
+.descripcion { display: flex; flex-direction: row; font-size: 1rem; color: #d8dade; user-select: none; }

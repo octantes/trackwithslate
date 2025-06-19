@@ -21,9 +21,18 @@ export default
 </script>
 
 <template>
-    <input class="rango" type="range"  :min="min" :max="max" v-model.number="internalValue"/>
+  <input class="rango" type="range"  :min="min" :max="max" v-model.number="internalValue"/>
 </template>
 
 <style scoped>
-.rango { width: 160px; appearance: none; height: 4px; border-radius: 4px; background: #555; outline: none; cursor: pointer }
+.rango
+{
+  width: 160px;
+  appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  background: #555;
+  outline: none;
+  cursor: pointer;
+}
 </style>

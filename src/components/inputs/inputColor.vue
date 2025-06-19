@@ -29,13 +29,13 @@ export default
 </script>
 
 <template>
-  <button type="button" class="botonColor" @click="siguienteEmoji">
+  <button type="button" class="boton" @click="siguienteEmoji">
     <span class="color">{{ valor }}</span>
   </button>
 </template>
 
 <style scoped>
-.botonColor
+.boton
 {
   position: relative; 
   display: inline-flex; 
@@ -52,7 +52,7 @@ export default
   cursor: pointer; 
   transition: background 0.2s ease, transform 0.05s ease;
 }
-.botonColor:hover { background: #4d4c4c; }
-.botonColor:active { transform: scale(0.95); }
+.boton:hover { background: #4d4c4c; }
+.boton:active { transform: scale(0.95); }
 .color { font-size: 1rem; line-height: 1; }
 </style>

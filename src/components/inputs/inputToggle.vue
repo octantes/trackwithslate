@@ -2,11 +2,11 @@
 export default
 {
   name: 'inputToggle',
+  emits: ['update:modelValue'],
   props:
   {
-    modelValue: { type: Boolean, default: false }
+    modelValue: { type: Boolean, default: false },
   },
-  emits: ['update:modelValue'],
   computed:
   {
     valor:
@@ -29,7 +29,19 @@ export default
 </template>
 
 <style scoped>
-.toggle { width: 44px; height: 24px; border-radius: 999px; background: #1b1c1c; border: 1px solid #1b1c1c; display: flex; align-items: center; cursor: pointer; transition: all 0.2s ease; padding: 2px }
+.toggle
+{
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background: #1b1c1c;
+  border: 1px solid #1b1c1c;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 2px;
+}
 .toggle .circulo { width: 18px; height: 18px; border-radius: 50%; background: #d8dade; transition: transform 0.2s ease }
 .toggle.activo { background: #4C9AFF; border-color: #4C9AFF }
 .toggle.activo .circulo { transform: translateX(20px); background: #1b1c1c }

@@ -1,9 +1,13 @@
 <script>
-import BotonArchivoBajar from './components/botones/botonArchivoBajar.vue'
+import formularioCategoria from './components/vistas/formularioCategoria.vue'
+import formularioRegistro from './components/vistas/formularioRegistro.vue'
+import vistaConfiguracion from './components/vistas/vistaConfiguracion.vue'
+import vistaPrincipal from './components/vistas/vistaPrincipal.vue'
+import vistaTabla from './components/vistas/vistaTabla.vue'
 export default
 {
   name: 'slate',
-  components: { BotonArchivoBajar },
+  components: {},
   methods: {},
   emits: {},
   data() {},
@@ -13,7 +17,6 @@ export default
 
 <template>
   <div class="contenedor">
-    <BotonArchivoBajar />
     <component
       :is="vistaActual"
       :entrada="entradaActual"

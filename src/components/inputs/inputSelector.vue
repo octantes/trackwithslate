@@ -24,7 +24,7 @@ export default
 </script>
 
 <template>
-  <div class="inputWRP">
+  <div class="inputWrapper">
     <select class="input" v-model="valor">
       <option disabled value="">{{ placeholder }}</option>
       <option v-for="opcion in opciones" :key="opcion" :value="opcion">{{ opcion }}</option>
@@ -34,5 +34,15 @@ export default
 </template>
 
 <style scoped>
-.arrow { position: absolute; right: .8em; top: 50%; width: 1rem; height: 1rem; pointer-events: none; transform: translateY(-50%); color: #d8dade; }
+.arrow
+{
+  position: absolute;
+  right: .8em;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  transform: translateY(-50%);
+  color: #d8dade;
+}
 </style>

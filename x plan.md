@@ -19,4 +19,4 @@ Get-ChildItem -Recurse -Path src/components | Where-Object {
   $nombre = $_.Name
   $contenido = Get-Content $_.FullName -Raw
   "[=|=|`"$nombre`"|=|=]`n$contenido"
-} | Set-Content -Encoding UTF8 NEWMVP1.vue
+} | Set-Content -Encoding UTF8 NEWMVP3.vue
