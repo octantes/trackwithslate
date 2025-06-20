@@ -1,7 +1,7 @@
 <script>
 import { ref, computed } from 'vue'
 import { obtenerRegistros, obtenerColumnas, obtenerOpciones, obtenerLimiteEntradas, obtenerPagina, 
-  eliminarRegistro, eliminarFila, testIgualdad } from '../funciones.js'
+  eliminarRegistro, eliminarFila, testIgualdad } from './funciones.js'
 export default { name: 'csvtabla',
   props: { editable: { type: Boolean, default: false }, filtrados: { type: Array, default: null } },
   emits: ['editarEntrada', 'registroEliminado'],

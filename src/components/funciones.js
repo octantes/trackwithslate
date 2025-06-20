@@ -36,7 +36,6 @@ export function obtenerLimiteEntradas() { return obtenerOpciones().limiteEntrada
 export function obtenerLimiteBotones() { return obtenerOpciones().limiteBotones || 12 }
 export function obtenerPagina(arr, pagina, limite) { const inicio = pagina * limite; return arr.slice(inicio, inicio + limite) }
 
-
 // setters localstorage
 
 export function guardarRegistros(registros) { localStorage.setItem('slateRegistros', JSON.stringify(registros)) }
@@ -143,6 +142,20 @@ export function eliminarFila(fila) {
   if (index === -1) return false
   eliminarRegistro(index)
   return true
+}
+
+// otros localstorage
+
+export function filtrarRegistros(input)
+{
+  const query = (input || '').trim().toLowerCase()
+  if (!query) return null
+  const registros = obtenerRegistros()
+  return registros.filter(registro =>
+    Object.values(registro).some(valor =>
+      String(valor).toLowerCase().includes(query)
+    )
+  )
 }
 
 // funciones csv

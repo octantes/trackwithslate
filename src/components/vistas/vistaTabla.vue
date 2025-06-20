@@ -1,11 +1,12 @@
 <script>
+import { filtrarRegistros } from '../funciones.js'
 import renglonVistas from '../renglones/renglonVistas.vue'
+import inputBuscar from '../inputs/inputBuscar.vue'
 import csvTabla from '../tabla/csvTabla.vue'
-import csvBuscar from '../tabla/csvBuscar.vue'
 export default
 {
   name: 'vistaTabla',
-  components: { csvTabla, csvBuscar, renglonVistas },
+  components: { csvTabla, inputBuscar, renglonVistas },
   emits: ['cerrar', 'cambiarVista'],
   data()
   {
@@ -17,7 +18,8 @@ export default
 <template>
   <div class ="display">
 
-    <csvBuscar @filtrar="filtrados = $event" />
+    <inputBuscar @buscar="filtrados = filtrarRegistros($event)" />
+    
     <csvTabla :filtrados="filtrados" :editable="true" @registroEliminado="filtrados = null"
     @editarEntrada="$emit('cambiarVista','formularioRegistro', { tipo:'entrada', propsFormulario:{ modo:'editar', datos:$event } })"/>
     
