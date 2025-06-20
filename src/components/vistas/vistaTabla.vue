@@ -1,11 +1,11 @@
 <script>
-import botonInterfazVolver from './botonInterfazVolver.vue'
-import csvTabla from './csvTabla.vue'
-import csvBuscar from './csvBuscar.vue'
+import renglonVistas from '../renglones/renglonVistas.vue'
+import csvTabla from '../tabla/csvTabla.vue'
+import csvBuscar from '../tabla/csvBuscar.vue'
 export default
 {
   name: 'vistaTabla',
-  components: { botonInterfazVolver, csvTabla, csvBuscar },
+  components: { csvTabla, csvBuscar, renglonVistas },
   emits: ['cerrar', 'cambiarVista'],
   data()
   {
@@ -20,6 +20,8 @@ export default
     <csvBuscar @filtrar="filtrados = $event" />
     <csvTabla :filtrados="filtrados" :editable="true" @registroEliminado="filtrados = null"
     @editarEntrada="$emit('cambiarVista','formularioRegistro', { tipo:'entrada', propsFormulario:{ modo:'editar', datos:$event } })"/>
+    
+    <renglonVistas @cambiarVista="$emit('cambiarVista', $event)" />
     
   </div>
 </template>

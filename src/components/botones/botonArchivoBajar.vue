@@ -5,15 +5,12 @@ export default
 {
   name: 'botonArchivoBajar',
   components: { DocumentArrowDownIcon },
-  methods:
-  {
-    bajar() { csvBajar() }
-  },
+  methods: { csvBajar },
 }
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="bajar">
+  <button type="button" class='botonUI' @click="csvBajar()">
     <DocumentArrowDownIcon class="iconoUI" />
   </button>
 </template>

@@ -1,9 +1,7 @@
-
-
 <script>
-import botonVistaConfiguracion from './components/botones/botonVistaConfiguracion.vue'
-import botonVistaPrincipal from './components/botones/botonVistaPrincipal.vue'
-import botonVistaTabla from './components/botones/botonVistaTabla.vue'
+import botonVistaConfiguracion from '../botones/botonVistaConfiguracion.vue'
+import botonVistaPrincipal from '../botones/botonVistaPrincipal.vue'
+import botonVistaTabla from '../botones/botonVistaTabla.vue'
 export default
 {
   name: 'renglonVistas',

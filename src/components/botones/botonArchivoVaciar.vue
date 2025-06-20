@@ -5,15 +5,12 @@ export default
 {
   name: 'botonArchivoVaciar',
   components: { DocumentMinusIcon },
-  methods:
-  {
-    vaciar() { csvVaciar() }
-  },
+  methods: { csvVaciar },
 }
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="vaciar">
+  <button type="button" class='botonUI' @click="csvVaciar()">
     <DocumentMinusIcon class="iconoUI" />
   </button>
 </template>

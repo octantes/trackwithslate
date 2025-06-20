@@ -1,6 +1,6 @@
 <script>
-import renglonAcciones from './renglonAcciones.vue'
-import inputColor from './inputColor.vue'
+import renglonAcciones from '../renglones/renglonAcciones.vue'
+import inputColor from '../inputs/inputColor.vue'
 export default
 {
   name: 'formularioCategoria',
@@ -18,10 +18,6 @@ export default
       nuevoNombre: this.categoria?.nombre || '',
     }
   },
-  methods:
-  {
-    guardarCambios() { this.$emit('cerrar') },
-  },
 }
 </script>
 
@@ -32,7 +28,7 @@ export default
     <input v-model="nuevoNombre" class="inputNOMBRE" />
     <inputEmoji v-if="mostrarEmoji" v-model="nuevoEmoji" />
 
-    <renglonAcciones @aceptar="guardarCambios" @cancelar="$emit('cerrar')" />
+    <renglonAcciones @aceptar="$emit('aceptar')" @cerrar="$emit('cerrar')" />
 
   </div>
 </template>

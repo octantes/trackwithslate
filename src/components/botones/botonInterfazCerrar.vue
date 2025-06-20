@@ -2,14 +2,14 @@
 import { XMarkIcon } from '@heroicons/vue/24/solid'
 export default
 {
-  name: 'botonInterfazCancelar',
+  name: 'botonInterfazCerrar',
   components: { XMarkIcon },
-  emits: ['cancelar'],
+  emits: ['cerrar'],
 }
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="$emit('cancelar')">
+  <button type="button" class='botonUI' @click="$emit('cerrar')">
     <XMarkIcon class="iconoUI" />
   </button>
 </template>

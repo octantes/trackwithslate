@@ -1,12 +1,12 @@
 <script>
-import { obtenerColumnas, guardarColumnas, eliminarColumna, renombrarColumna, toggleCategoria } from './funciones.js'
-import inputRango from './inputRango.vue'
-import inputString from './inputString.vue'
-import inputDrop from './inputDrop.vue'
-import inputToggle from './inputToggle.vue'
+import { obtenerColumnas, guardarColumnas, eliminarColumna, renombrarColumna, toggleCategoria } from '../funciones.js'
+import inputRango from '../inputs/inputRango.vue'
+import inputString from '../inputs/inputString.vue'
+import inputSelector from '../inputs/inputSelector.vue'
+import inputToggle from '../inputs/inputToggle.vue'
 const formatosFecha = [ 'DD/MM/YYYY','MM/DD/YYYY','YYYY-MM-DD','DD-MM-YYYY','D-MMM-YYYY', 'YYYY/MM/DD','YYYY.MM.DD','Month DD, YYYY','DD Month, YYYY','Day DD Month YYYY' ]
 export default { name: 'opcionescolumna',
-  components: { inputRango, inputString, inputDrop, inputToggle },
+  components: { inputRango, inputString, inputToggle, inputSelector },
   computed: { categoriaActual() { return this.slateColumnas[this.categoriaSeleccionada] || {} }, },
   watch: { slateColumnas: { deep: true, handler(nuevas) { guardarColumnas(nuevas) } } },
   data() { return { slateColumnas: obtenerColumnas(), categoriaSeleccionada: '', formatosFecha: formatosFecha } },
@@ -30,7 +30,7 @@ export default { name: 'opcionescolumna',
   <div class="opciones">
     
     <div class="selector">
-      <inputDrop v-model="categoriaSeleccionada" :opciones="Object.keys(slateColumnas)" placeholder="Columna" />
+      <inputSelector v-model="categoriaSeleccionada" :opciones="Object.keys(slateColumnas)" placeholder="Columna" />
       <button v-if="categoriaSeleccionada" class="inputTXT" @click="eliminarSeleccionada">eliminar columna</button>
     </div>
     <div v-if="categoriaSeleccionada" class="opcion">
@@ -39,7 +39,7 @@ export default { name: 'opcionescolumna',
     </div>
     <div v-if="categoriaSeleccionada" class="opcion">
       <div class="descripcion">tipo</div>
-      <inputDrop v-model="categoriaActual.tipo" :opciones="['texto', 'numero', 'fecha', 'toggle']" placeholder="elegí un tipo" />
+      <inputSelector v-model="categoriaActual.tipo" :opciones="['texto', 'numero', 'fecha', 'toggle']" placeholder="elegí un tipo" />
     </div>
     <div v-if="categoriaSeleccionada" class="opcion">
       <div class="descripcion">es una categoría?</div>
@@ -54,7 +54,7 @@ export default { name: 'opcionescolumna',
 
     <div v-if="categoriaActual.tipo === 'fecha'" class="opcion">
       <div class="descripcion">formato de fecha</div>
-      <inputDrop v-model="categoriaActual.fechaFormato" :opciones="formatosFecha" placeholder="elegí un formato" />
+      <inputSelector v-model="categoriaActual.fechaFormato" :opciones="formatosFecha" placeholder="elegí un formato" />
     </div>
     <div v-if="categoriaActual.tipo === 'fecha'" class="opcion">
       <div class="descripcion">fecha automática</div>

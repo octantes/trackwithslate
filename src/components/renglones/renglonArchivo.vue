@@ -1,8 +1,8 @@
 <script>
-import botonArchivoBajar from './components/botones/botonArchivoBajar.vue'
-import botonArchivoSubir from './components/botones/botonArchivoSubir.vue'
-import botonArchivoSumar from './components/botones/botonArchivoSumar.vue'
-import botonArchivoVaciar from './components/botones/botonArchivoVaciar.vue'
+import botonArchivoBajar from '../botones/botonArchivoBajar.vue'
+import botonArchivoSubir from '../botones/botonArchivoSubir.vue'
+import botonArchivoSumar from '../botones/botonArchivoSumar.vue'
+import botonArchivoVaciar from '../botones/botonArchivoVaciar.vue'
 export default
 {
   name: 'renglonArchivo',

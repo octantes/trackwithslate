@@ -1,14 +1,15 @@
 <script>
-import { obtenerOpciones } from './funciones.js'
-import inputString from './inputString.vue'
-import inputNumero from './inputNumero.vue'
-import inputToggle from './inputToggle.vue'
-import opcionesColumna from './opcionesColumna.vue'
+import { obtenerOpciones } from '../funciones.js'
+import renglonVistas from '../renglones/renglonVistas.vue'
+import inputString from '../inputs/inputString.vue'
+import inputNumero from '../inputs/inputNumero.vue'
+import inputToggle from '../inputs/inputToggle.vue'
+import opcionesColumna from '../categorias/opcionesColumna.vue'
 export default
 {
   name: 'vistaconfiguracion',
-  emits: ['cerrar'],
-  components: { inputString, inputNumero, opcionesColumna, inputToggle },
+  emits: ['cambiarVista', 'cerrar'],
+  components: { inputString, inputNumero, opcionesColumna, inputToggle, renglonVistas },
   watch:
   {
     opciones:
@@ -51,6 +52,8 @@ export default
         <inputToggle v-model="opciones.sumarInicio" />
       </label>
     </div>
+
+    <renglonVistas @cambiarVista="$emit('cambiarVista', $event)" />
 
   </div>
 </template>

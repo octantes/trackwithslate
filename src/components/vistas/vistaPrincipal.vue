@@ -1,9 +1,9 @@
 <script>
 import renglonArchivo from '../renglones/renglonArchivo.vue'
 import renglonVistas from '../renglones/renglonVistas.vue'
-import botonFormularioRegistro from './botonFormularioRegistro.vue'
-import botonFormularioCategoria from './botonFormularioCategoria.vue'
-import panelBotones from './panelBotones.vue'
+import botonFormularioRegistro from '../botones/botonFormularioRegistro.vue'
+import botonFormularioCategoria from '../botones/botonFormularioCategoria.vue'
+import panelBotones from '../categorias/panelBotones.vue'
 export default
 {
   name: 'vistaPrincipal',

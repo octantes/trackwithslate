@@ -1,17 +1,17 @@
 <script>
-import botonInterfazAceptar from './components/botones/botonInterfazAceptar.vue'
-import botonInterfazCancelar from './components/botones/botonInterfazCancelar.vue'
+import botonInterfazAceptar from '../botones/botonInterfazAceptar.vue'
+import botonInterfazCerrar from '../botones/botonInterfazCerrar.vue'
 export default
 {
   name: 'renglonArchivo',
-  components: { botonInterfazAceptar, botonInterfazCancelar },
-  emits: ['aceptar', 'cancelar'],
+  components: { botonInterfazAceptar, botonInterfazCerrar },
+  emits: ['aceptar', 'cerrar'],
 }
 </script>
 
 <template>
   <div class="renglon">
     <botonInterfazAceptar @aceptar="$emit('aceptar')" />
-    <botonInterfazCancelar @cancelar ="$emit('cancelar')" />
+    <botonInterfazCerrar @cerrar ="$emit('cerrar')" />
   </div>
 </template>
