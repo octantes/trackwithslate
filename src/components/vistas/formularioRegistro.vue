@@ -51,8 +51,8 @@ export default
     aceptar()
     {
       const nuevoRegistro = { ...this.valores }
-      if (!this.entrada) agregarRegistro(nuevoRegistro)
-      else this.$emit('editarEntrada', nuevoRegistro)
+      if (Object.keys(this.entrada).length === 0) { agregarRegistro(nuevoRegistro) }
+      else { this.$emit('editarEntrada', nuevoRegistro) }
       this.$emit('cerrar')
     }
   }
