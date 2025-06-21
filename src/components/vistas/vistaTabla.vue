@@ -7,11 +7,19 @@ export default
 {
   name: 'vistaTabla',
   components: { csvTabla, inputBuscar, renglonVistas },
-  emits: ['cerrar', 'cambiarVista'],
+  emits: ['cerrar', 'cambiarVista', 'seleccionar'],
   data()
   {
     return { filtrados: null }
   },
+  methods:
+  {
+    editarEntrada(datos) 
+    {
+      this.$emit('cambiarVista', 'formularioRegistro')
+      this.$emit('seleccionar', { datos })
+    }
+  }
 }
 </script>
 
@@ -19,10 +27,7 @@ export default
   <div class ="display">
 
     <inputBuscar @buscar="filtrados = filtrarRegistros($event)" />
-    
-    <csvTabla :filtrados="filtrados" :editable="true" @registroEliminado="filtrados = null"
-    @editarEntrada="$emit('cambiarVista','formularioRegistro', { tipo:'entrada', propsFormulario:{ modo:'editar', datos:$event } })"/>
-    
+    <csvTabla :filtrados="filtrados" @registroEliminado="filtrados = null" @editarEntrada="editarEntrada" />
     <renglonVistas @cambiarVista="$emit('cambiarVista', $event)" />
     
   </div>
