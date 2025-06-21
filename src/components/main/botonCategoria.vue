@@ -2,7 +2,7 @@
 export default
 {
   name: 'botonCustomCategoria',
-  emits: ['click', 'editar', 'eliminar'],
+  emits: ['click', 'editarCategoria', 'eliminarCategoria'],
   props:
   {
     emoji: { type: String, default: '🔴' },
@@ -29,8 +29,8 @@ export default
     </button>
 
     <div v-if="mostrarAcciones" class="categoriaAcciones">
-      <span class="iconoCAT" @click.stop="$emit('editar')">✏️</span>
-      <span class="iconoCAT" @click.stop="$emit('eliminar')">❌</span>
+      <span class="iconoCAT" @click.stop="$emit('editarCategoria')">✏️</span>
+      <span class="iconoCAT" @click.stop="$emit('eliminarCategoria')">❌</span>
     </div>
     
   </div>

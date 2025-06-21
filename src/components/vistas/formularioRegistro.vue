@@ -4,13 +4,12 @@ import renglonAcciones from '../renglones/renglonAcciones.vue'
 import inputNumero from '../inputs/inputNumero.vue'
 import inputString from '../inputs/inputString.vue'
 import inputToggle from '../inputs/inputToggle.vue'
-
 export default
 {
   name: 'formularioRegistro',
-  emits: ['cerrar', 'editar'],
+  emits: ['cerrar', 'editarEntrada'],
   components: { renglonAcciones, inputNumero, inputString, inputToggle },
-  props: { entrada: { type: Object, default: null } },
+  props: { entrada: { type: Object, default: {} } },
   data()
   {
     const columnasObj = obtenerColumnas()
@@ -19,7 +18,6 @@ export default
       const tipo = columnasObj[nombre]?.tipo || 'string'
       return { nombre, tipo }
     })
-
     const valores = {}
     const inicializarValores = (fuente = {}) =>
     {
@@ -31,8 +29,6 @@ export default
         else valores[nombre] = valor !== undefined ? String(valor) : ''
       })
     }
-
-    inicializarValores(this.entrada)
     return { columnas, valores, inicializarValores }
   },
   watch:
@@ -56,7 +52,7 @@ export default
     {
       const nuevoRegistro = { ...this.valores }
       if (!this.entrada) agregarRegistro(nuevoRegistro)
-      else this.$emit('editar', nuevoRegistro)
+      else this.$emit('editarEntrada', nuevoRegistro)
       this.$emit('cerrar')
     }
   }
@@ -64,7 +60,7 @@ export default
 </script>
 
 <template>
-    <div class="formulario">
+    <div class="formularioRegistro">
 
         <div v-for="col in columnas" :key="col.nombre" class="campo">
             <component :is="inputPara(col)" v-model="valores[col.nombre]" :placeholder="col.nombre"/>

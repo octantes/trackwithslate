@@ -1,18 +1,57 @@
 <script>
-import renglonAcciones from '../renglones/renglonAcciones.vue'
+import inputString from '../inputs/inputString.vue'
 import inputColor from '../inputs/inputColor.vue'
-export default
-{
+import renglonAcciones from '../renglones/renglonAcciones.vue'
+
+export default {
   name: 'formularioCategoria',
-  emits: ['cerrar'],
-  components: { inputColor, renglonAcciones },
+  emits: ['cerrar', 'editarCategoria'],
+  components: { inputString, inputColor, renglonAcciones },
+  props:
+  {
+    categoria: { type: Object, default: () => ({}) },
+    colKey: {type: String, default: '' },
+    catKey: { type: String, default: '' }
+  },
+  data()
+  {
+    return {
+      nombre: this.categoria?.nombre || '',
+      emoji: this.categoria?.emoji || '🔴',
+    }
+  },
+  watch:
+  {
+    categoria:
+    {
+      immediate: true,
+      deep: true,
+      handler(nueva)
+      {
+        this.nombre = nueva?.nombre || ''
+        this.emoji = nueva?.emoji || '🔴'
+      }
+    },
+  },
+  methods:
+  {
+    aceptar() {
+      this.$emit('editarCategoria',
+      {
+        colKey: this.colKey,
+        catKey: this.catKey,
+        cambios: { nombre: this.nombre, emoji: this.emoji }
+      })
+      this.$emit('cerrar')
+    }
+  }
 }
 </script>
 
 <template>
-  <div class="formulario">
-
-    <renglonAcciones @aceptar="$emit('aceptar')" @cerrar="$emit('cerrar')" />
-
+  <div class="formularioCategoria">
+    <inputColor v-model="emoji" />
+    <inputString v-model="nombre" placeholder="nombre de categoría" />
+    <renglonAcciones @aceptar="aceptar" @cerrar="$emit('cerrar')" />
   </div>
 </template>

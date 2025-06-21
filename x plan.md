@@ -20,3 +20,12 @@ Get-ChildItem -Recurse -Path src/components | Where-Object {
   $contenido = Get-Content $_.FullName -Raw
   "[=|=|`"$nombre`"|=|=]`n$contenido"
 } | Set-Content -Encoding UTF8 NEWMVP3.vue
+
+---
+
+- desvincular columnas no anda
+. las columnas desvinculadas no deben renderizarse en panelBotones
+. tocar eliminar debe cambiar vinculada a false
+. integrar el componente de columnas desvinculadas
+- tocar el boton de categoria debe abrir formulario entrada no formulario categoria
+- crear una nueva categoria la crea siempre en el mismo lugar en vez de acumularlas, siempre se sobre escribe

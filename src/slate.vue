@@ -1,5 +1,5 @@
 <script>
-import { inicializarSlate, obtenerRegistros, editarRegistro, testIgualdad } from './components/funciones.js'
+import { inicializarSlate, obtenerRegistros, editarRegistro, testIgualdad, editarCategoria, obtenerCategorias, guardarCategorias } from './components/funciones.js'
 import formularioCategoria from './components/vistas/formularioCategoria.vue'
 import formularioRegistro from './components/vistas/formularioRegistro.vue'
 import vistaConfiguracion from './components/vistas/vistaConfiguracion.vue'
@@ -17,17 +17,37 @@ export default
     vistaTabla,
   },
   mounted() { inicializarSlate() },
-  data() { return { vistaActual: 'vistaPrincipal', entradaActual: null } },
+  data() { return { vistaActual: 'vistaPrincipal', entradaActual: {}, categoriaActual: {} } },
   methods:
   {
-    vistaVolver() { this.vistaActual = 'vistaPrincipal'; this.entradaActual = null },
+    vistaVolver() { this.vistaActual = 'vistaPrincipal'; this.entradaActual = {}, this.categoriaActual = {} },
     editarEntrada(nuevosDatos)
     {
       const registros = obtenerRegistros()
       const index = registros.findIndex(r => testIgualdad(r, this.entradaActual))
       if (index === -1) return
       editarRegistro(index, nuevosDatos)
-    }
+    },
+    editarCateg(nuevosDatos) {
+      const categorias = obtenerCategorias()
+      let { colKey, catKey, cambios } = nuevosDatos
+
+      // clave de columna vacía → guardar en 'undefined'
+      if (!colKey) colKey = 'undefined'
+
+      // clave de categoría vacía → usar el nombre como key
+      if (!catKey) catKey = cambios.nombre || 'sin_nombre'
+
+      if (!categorias[colKey]) categorias[colKey] = {}
+
+      const actual = categorias[colKey][catKey]
+      if (actual) {
+        editarCategoria(colKey, catKey, cambios)
+      } else {
+        categorias[colKey][catKey] = { ...cambios, vinculada: true }
+        guardarCategorias(categorias)
+      }
+    },
   },
 }
 </script>
@@ -37,10 +57,15 @@ export default
     <component
       :is="vistaActual"
       :entrada="entradaActual"
+      :categoria="categoriaActual"
+      :colKey="categoriaActual.colKey"
+      :catKey="categoriaActual.catKey"
       @cerrar="vistaVolver"
       @cambiarVista="vistaActual = $event"
-      @seleccionar="entradaActual = { ...$event.datos }" 
-      @editar="editarEntrada"
+      @seleccionarRegistro="entradaActual = { ...$event.datos }"
+      @editarEntrada="editarEntrada"
+      @seleccionarCategoria="categoriaActual = $event.datos"
+      @editarCategoria="editarCateg"
     />
   </div>
 </template>

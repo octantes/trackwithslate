@@ -1,35 +1,33 @@
 <script>
 import renglonArchivo from '../renglones/renglonArchivo.vue'
 import renglonVistas from '../renglones/renglonVistas.vue'
-import botonFormularioRegistro from '../botones/botonFormularioRegistro.vue'
-import botonFormularioCategoria from '../botones/botonFormularioCategoria.vue'
+import renglonFormularios from '../renglones/renglonFormularios.vue'
 import panelBotones from '../main/panelBotones.vue'
 export default
 {
   name: 'vistaPrincipal',
-  emits: ['cambiarVista', 'cerrar', 'seleccionar', 'editar'],
+  emits: ['cambiarVista', 'seleccionarCategoria', 'editarCategoria'],
   components:
   {
     renglonArchivo,
     renglonVistas,
-    botonFormularioRegistro,
-    botonFormularioCategoria,
+    renglonFormularios,
     panelBotones,
   },
   props:
   {
-    entrada: { type: Object, default: null }
+    entrada: { type: Object, default: {} }
   },
   methods:
   {
     categoriaSeleccionada(payload)
     {
-      this.$emit('seleccionar', payload)
-      this.$emit('cambiarVista', 'formularioRegistro')
+      this.$emit('seleccionarCategoria', payload)
+      this.$emit('cambiarVista', 'formularioCategoria')
     },
     editarCategoria(payload) {
-      this.$emit('editar', payload)
-      this.$emit('cambiarVista', 'formularioRegistro')
+      this.$emit('editarCategoria', payload)
+      this.$emit('cambiarVista', 'formularioCategoria')
     },
   },
 }
@@ -39,13 +37,8 @@ export default
   <div class="pagina">
     
     <renglonArchivo />
-    <panelBotones @categoria-seleccionada="categoriaSeleccionada" @editar-categoria="editarCategoria"/>
-
-    <div class="renglon">
-      <botonFormularioRegistro @cambiarVista="$emit('cambiarVista', $event)"/>
-      <botonFormularioCategoria @cambiarVista="$emit('cambiarVista', $event)"/>
-    </div>
-    
+    <panelBotones @categoriaSeleccionada="categoriaSeleccionada" @editarCategoria="editarCategoria" />
+    <renglonFormularios @cambiarVista="$emit('cambiarVista', $event)" />
     <renglonVistas @cambiarVista="$emit('cambiarVista', $event)" />
 
   </div>

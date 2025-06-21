@@ -3,7 +3,7 @@ import botonInterfazAceptar from '../botones/botonInterfazAceptar.vue'
 import botonInterfazCerrar from '../botones/botonInterfazCerrar.vue'
 export default
 {
-  name: 'renglonArchivo',
+  name: 'renglonAcciones',
   components: { botonInterfazAceptar, botonInterfazCerrar },
   emits: ['aceptar', 'cerrar'],
 }

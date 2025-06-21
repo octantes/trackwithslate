@@ -7,7 +7,7 @@ export default
 {
   name: 'vistaTabla',
   components: { csvTabla, inputBuscar, renglonVistas },
-  emits: ['cerrar', 'cambiarVista', 'seleccionar'],
+  emits: ['cambiarVista', 'seleccionarRegistro'],
   data()
   {
     return { filtrados: null }
@@ -17,7 +17,7 @@ export default
     editarEntrada(datos) 
     {
       this.$emit('cambiarVista', 'formularioRegistro')
-      this.$emit('seleccionar', { datos })
+      this.$emit('seleccionarRegistro', { datos })
     }
   }
 }

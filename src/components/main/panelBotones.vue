@@ -1,9 +1,11 @@
 <script>
 import { obtenerCategorias, obtenerOpciones } from '../funciones.js'
 import botonCategoria from './botonCategoria.vue'
-
-export default { name: 'panelbotones',
+export default
+{
+  name: 'panelbotones',
   components: { botonCategoria },
+  emits: ['categoriaSeleccionada', 'editarCategoria', 'eliminarCategoria'],
   data() { return { categorias: {}, limiteBotones: 8, columnasGrid: 1 } },
   created() { 
     this.cargarCategorias(); const opts = obtenerOpciones()
@@ -11,18 +13,20 @@ export default { name: 'panelbotones',
   },
   methods: {
     cargarCategorias() { this.categorias = obtenerCategorias() || {}; this.actualizarColumnasGrid() },
-    manejarClick(colKey, catKey) { const entrada = { [colKey]: catKey }; this.$emit('categoria-seleccionada', { datos: entrada }) },
+    manejarClick(colKey, catKey) { const entrada = { [colKey]: catKey }; this.$emit('categoriaSeleccionada', { datos: entrada }) },
     actualizarColumnasGrid() {
       const totalCategorias = Object.values(this.categorias).reduce((acc, cats) => acc + Object.keys(cats).length, 0)
       this.columnasGrid = Math.ceil(totalCategorias / this.limiteBotones) || 1
     },
     manejarEditar(colKey, catKey) {
-      const cat = this.categorias[colKey]?.[catKey]; if (!cat) return
-      const entrada = { ...cat, [colKey]: catKey }; this.$emit('editar-categoria', { datos: entrada })
+      const cat = this.categorias[colKey]?.[catKey]
+      if (!cat) return
+      const entrada = { ...cat, [colKey]: catKey }
+      this.$emit('editarCategoria', { datos: entrada })
     },
     manejarEliminar(colKey, catKey) {
       if (this.categorias[colKey]?.[catKey]) { this.categorias[colKey][catKey].vinculada = false }
-      this.$emit('eliminar-categoria', { columna: colKey, categoria: catKey })
+      this.$emit('eliminarCategoria', { columna: colKey, categoria: catKey })
     }
   },
   computed: {
@@ -53,8 +57,8 @@ export default { name: 'panelbotones',
     <botonCategoria v-for="cat in categoriasPlanas"
       :key="cat.colKey + '_' + cat.catKey" :label="cat.nombre" :emoji="cat.emoji"
       @click="manejarClick(cat.colKey, cat.catKey)"
-      @editar="manejarEditar(cat.colKey, cat.catKey)"
-      @eliminar="manejarEliminar(cat.colKey, cat.catKey)"
+      @editarCategoria="manejarEditar(cat.colKey, cat.catKey)"
+      @eliminarCategoria="manejarEliminar(cat.colKey, cat.catKey)"
     />
   </div>
 </template>
