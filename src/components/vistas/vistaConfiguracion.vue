@@ -4,7 +4,7 @@ import renglonVistas from '../renglones/renglonVistas.vue'
 import inputString from '../inputs/inputString.vue'
 import inputNumero from '../inputs/inputNumero.vue'
 import inputToggle from '../inputs/inputToggle.vue'
-import opcionesColumna from '../categorias/opcionesColumna.vue'
+import opcionesColumna from '../main/opcionesColumna.vue'
 export default
 {
   name: 'vistaconfiguracion',

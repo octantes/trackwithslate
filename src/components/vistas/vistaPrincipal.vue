@@ -3,7 +3,7 @@ import renglonArchivo from '../renglones/renglonArchivo.vue'
 import renglonVistas from '../renglones/renglonVistas.vue'
 import botonFormularioRegistro from '../botones/botonFormularioRegistro.vue'
 import botonFormularioCategoria from '../botones/botonFormularioCategoria.vue'
-import panelBotones from '../categorias/panelBotones.vue'
+import panelBotones from '../main/panelBotones.vue'
 export default
 {
   name: 'vistaPrincipal',

@@ -3,44 +3,61 @@ import { obtenerColumnas, agregarRegistro } from '../funciones.js'
 import renglonAcciones from '../renglones/renglonAcciones.vue'
 import inputNumero from '../inputs/inputNumero.vue'
 import inputString from '../inputs/inputString.vue'
+import inputToggle from '../inputs/inputToggle.vue'
 export default
 {
     name: 'formularioRegistro',
     emits: ['cerrar'],
-    components: { renglonAcciones, inputNumero, inputString },
+    components: { renglonAcciones, inputNumero, inputString, inputToggle },
     props: 
     {
-        entrada: 
-        { 
-            type: Object, 
-            default: null 
-        },
+        entrada: { type: Object, default: null },
     },
     data() 
     {
         const valores = {}
-        const columnasObj = obtenerColumnas()
-        const columnas = Object.keys(columnasObj).map(nombre => 
-        ({
-            nombre,
-            tipo: columnasObj[nombre]?.tipo || 'string',
-        }))
+        const columnasObjeto = obtenerColumnas()
+        const columnas = Object.keys(columnasObjeto).map(nombre => 
+        {
+            const tipo = columnasObjeto[nombre]?.tipo || 'string'
+            return { nombre, tipo }
+        })
         columnas.forEach(({ nombre, tipo }) => 
         {
             const valor = this.entrada?.[nombre]
-            valores[nombre] = tipo === 'numero'
-                ? valor !== undefined ? Number(valor) : 0
-                : valor !== undefined ? String(valor) : ''
+            if (tipo === 'numero') { valores[nombre] = valor !== undefined ? Number(valor) : 0 }
+            else if (tipo === 'toggle') { valores[nombre] = valor !== undefined ? Boolean(valor) : false }
+            else { valores[nombre] = valor !== undefined ? String(valor) : '' }
         })
         return { columnas, valores }
     },
+    watch:
+    {
+        entrada:
+        {
+            immediate: true,
+            deep: true,
+            handler(nuevaEntrada) 
+            {
+                this.columnas.forEach(({ nombre, tipo }) => 
+                {
+                    const valor = nuevaEntrada?.[nombre]
+                    if (tipo === 'numero') { this.valores[nombre] = valor !== undefined ? Number(valor) : 0 }
+                    else if (tipo === 'toggle') { this.valores[nombre] = valor !== undefined ? Boolean(valor) : false }
+                    else { this.valores[nombre] = valor !== undefined ? String(valor) : '' }
+                })
+            }
+        }
+    },
     methods: 
     {
-        inputPara(col) 
-        { 
-            return col.tipo === 'numero' ? 'inputNumero' : 'inputString' 
+        inputPara(col)
+        {
+            if (col.tipo === 'numero') return 'inputNumero'
+            if (col.tipo === 'toggle') return 'inputToggle'
+            return 'inputString'
         },
-        aceptar() 
+        aceptar()
         {
             const nuevoRegistro = { ...this.valores }
             if (!this.entrada) agregarRegistro(nuevoRegistro)

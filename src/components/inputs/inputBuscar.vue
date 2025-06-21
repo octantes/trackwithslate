@@ -25,3 +25,19 @@ export default
 <template>
   <input class="inputBuscar" v-model="texto" type="text" placeholder="buscar..." />
 </template>
+
+<style scoped>
+.inputBuscar {
+  width: 100%;
+  padding: .5em .8em;
+  font-size: 1rem;
+  border: 1px solid #1b1c1c;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #d8dade;
+  transition: background 0.2s,
+  border-color 0.2s;
+}
+.inputBuscar:hover { background: #4d4c4c; }
+.inputBuscar:focus { background: #4d4c4c; border-color: #4C9AFF; outline: none; }
+</style>

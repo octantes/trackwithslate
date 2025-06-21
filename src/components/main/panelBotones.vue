@@ -1,9 +1,9 @@
 <script>
 import { obtenerCategorias, obtenerOpciones } from '../funciones.js'
-import botoncustomcategoria from './botoncustomcategoria.vue'
+import botonCategoria from './botonCategoria.vue'
 
 export default { name: 'panelbotones',
-  components: { botoncustomcategoria },
+  components: { botonCategoria },
   data() { return { categorias: {}, limiteBotones: 8, columnasGrid: 1 } },
   created() { 
     this.cargarCategorias(); const opts = obtenerOpciones()
@@ -40,7 +40,7 @@ export default { name: 'panelbotones',
         'grid-auto-rows': 'auto',
         'max-height': `${this.limiteBotones * 40}px`,
         'overflow-y': 'auto',
-        'gap': '8px',
+        'gap': '.5em',
         'width': '100%'
       }
     }
@@ -50,8 +50,8 @@ export default { name: 'panelbotones',
 
 <template>
   <div class="panelBotones" :style="estiloGrid">
-    <botoncustomcategoria v-for="cat in categoriasPlanas"
-      :key="cat.colKey + '_' + cat.catKey" :label="cat.nombre" :emoji="cat.emoji" :editable="true"
+    <botonCategoria v-for="cat in categoriasPlanas"
+      :key="cat.colKey + '_' + cat.catKey" :label="cat.nombre" :emoji="cat.emoji"
       @click="manejarClick(cat.colKey, cat.catKey)"
       @editar="manejarEditar(cat.colKey, cat.catKey)"
       @eliminar="manejarEliminar(cat.colKey, cat.catKey)"
