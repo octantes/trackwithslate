@@ -5,7 +5,7 @@ import renglonAcciones from '../renglones/renglonAcciones.vue'
 
 export default {
   name: 'formularioCategoria',
-  emits: ['cerrar', 'editarCategoria'],
+  emits: ['cerrar', 'editarCategoria', 'guardarCategoria'],
   components: { inputString, inputColor, renglonAcciones },
   props:
   {
@@ -36,11 +36,12 @@ export default {
   methods:
   {
     aceptar() {
-      this.$emit('editarCategoria',
+      this.$emit('guardarCategoria',
       {
         colKey: this.colKey,
         catKey: this.catKey,
-        cambios: { nombre: this.nombre, emoji: this.emoji }
+        nombre: this.nombre,
+        emoji: this.emoji,
       })
       this.$emit('cerrar')
     }

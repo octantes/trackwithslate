@@ -23,7 +23,7 @@ export default
 </script>
 
 <template>
-  <input class="inputBuscar" v-model="texto" type="text" placeholder="buscar..." />
+  <input class="inputBuscar" name="inputBuscar" v-model="texto" type="text" placeholder="buscar..." />
 </template>
 
 <style scoped>

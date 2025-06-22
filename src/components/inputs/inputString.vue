@@ -20,5 +20,5 @@ export default
 </script>
 
 <template>
-  <input class="input" type="text" v-model="valor" :placeholder="placeholder" />
+  <input class="input" name="inputString" type="text" v-model="valor" :placeholder="placeholder" />
 </template>

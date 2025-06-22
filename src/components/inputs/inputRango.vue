@@ -21,7 +21,7 @@ export default
 </script>
 
 <template>
-  <input class="rango" type="range"  :min="min" :max="max" v-model.number="internalValue"/>
+  <input class="rango" name="inputRango" type="range"  :min="min" :max="max" v-model.number="internalValue"/>
 </template>
 
 <style scoped>

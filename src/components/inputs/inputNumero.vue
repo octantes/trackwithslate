@@ -24,5 +24,5 @@ export default
 </script>
 
 <template>
-  <input class="input" type="number" v-model.number="valor" :placeholder="placeholder" min="1" max="100" />
+  <input class="input" name="inputNumero" type="number"  v-model.number="valor" :placeholder="placeholder" min="1" max="100" />
 </template>

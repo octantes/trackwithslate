@@ -12,17 +12,26 @@ export default
     this.limiteBotones = opts.limiteBotones || 8; this.actualizarColumnasGrid()
   },
   methods: {
-    cargarCategorias() { this.categorias = obtenerCategorias() || {}; this.actualizarColumnasGrid() },
-    manejarClick(colKey, catKey) { const entrada = { [colKey]: catKey }; this.$emit('categoriaSeleccionada', { datos: entrada }) },
-    actualizarColumnasGrid() {
+    cargarCategorias()
+    {
+      this.categorias = obtenerCategorias() || {}
+      this.actualizarColumnasGrid()
+    },
+    manejarClick(colKey, catKey)
+    {
+      const entrada = { [colKey]: catKey }
+      this.$emit('categoriaSeleccionada', { datos: entrada })
+    },
+    actualizarColumnasGrid()
+    {
       const totalCategorias = Object.values(this.categorias).reduce((acc, cats) => acc + Object.keys(cats).length, 0)
       this.columnasGrid = Math.ceil(totalCategorias / this.limiteBotones) || 1
     },
-    manejarEditar(colKey, catKey) {
+    manejarEditar(colKey, catKey)
+    {
       const cat = this.categorias[colKey]?.[catKey]
       if (!cat) return
-      const entrada = { ...cat, [colKey]: catKey }
-      this.$emit('editarCategoria', { datos: entrada })
+      this.$emit('editarCategoria', { colKey, catKey, nombre: cat.nombre, emoji: cat.emoji })
     },
     manejarEliminar(colKey, catKey) {
       if (this.categorias[colKey]?.[catKey]) { this.categorias[colKey][catKey].vinculada = false }

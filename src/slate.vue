@@ -8,47 +8,47 @@ import vistaTabla from './components/vistas/vistaTabla.vue'
 export default
 {
   name: 'slate',
-  components:
-  {
-    formularioCategoria,
-    formularioRegistro,
-    vistaConfiguracion,
-    vistaPrincipal,
-    vistaTabla,
-  },
+  components: { formularioCategoria, formularioRegistro,  vistaConfiguracion, vistaPrincipal, vistaTabla },
   mounted() { inicializarSlate() },
-  data() { return { vistaActual: 'vistaPrincipal', entradaActual: {}, categoriaActual: {} } },
+  data()
+  {
+    return { vistaActual: 'vistaPrincipal', entradaActual: {}, categoriaActual: {} }
+  },
   methods:
   {
-    vistaVolver() { this.vistaActual = 'vistaPrincipal'; this.entradaActual = {}, this.categoriaActual = {} },
+    vistaVolver()
+    {
+      this.vistaActual = 'vistaPrincipal'
+      this.entradaActual = {}
+      this.categoriaActual = {}
+    },
     editarEntrada(nuevosDatos)
     {
-      const registros = obtenerRegistros()
-      const index = registros.findIndex(r => testIgualdad(r, this.entradaActual))
-      if (index === -1) return
-      editarRegistro(index, nuevosDatos)
+      const regs = obtenerRegistros()
+      const idx = regs.findIndex(r => testIgualdad(r, this.entradaActual))
+      if (idx === -1) return
+      editarRegistro(idx, nuevosDatos)
     },
-    editarCateg(nuevosDatos) {
-      const categorias = obtenerCategorias()
-      let { colKey, catKey, cambios } = nuevosDatos
-
-      // clave de columna vacía → guardar en 'undefined'
-      if (!colKey) colKey = 'undefined'
-
-      // clave de categoría vacía → usar el nombre como key
-      if (!catKey) catKey = cambios.nombre || 'sin_nombre'
-
-      if (!categorias[colKey]) categorias[colKey] = {}
-
-      const actual = categorias[colKey][catKey]
-      if (actual) {
-        editarCategoria(colKey, catKey, cambios)
-      } else {
-        categorias[colKey][catKey] = { ...cambios, vinculada: true }
-        guardarCategorias(categorias)
+    editarCategoria({ colKey, catKey, nombre, emoji })
+    {
+      this.categoriaActual = { colKey, catKey, nombre, emoji }
+      this.vistaActual = 'formularioCategoria'
+    },
+    guardarCategoria({ colKey, catKey, nombre, emoji })
+    {
+      const key = colKey || 'custom'
+      const cats = obtenerCategorias()
+      if (!cats[key]) cats[key] = {}
+      if (catKey !== nombre && cats[key][catKey])
+      {
+        delete cats[key][catKey]
       }
-    },
-  },
+      cats[key][nombre] = { nombre, emoji, vinculada: true }
+      editarCategoria(key, nombre, { nombre, emoji })
+      guardarCategorias(cats)
+      this.vistaVolver()
+    }
+  }
 }
 </script>
 
@@ -65,7 +65,8 @@ export default
       @seleccionarRegistro="entradaActual = { ...$event.datos }"
       @editarEntrada="editarEntrada"
       @seleccionarCategoria="categoriaActual = $event.datos"
-      @editarCategoria="editarCateg"
+      @editarCategoria="editarCategoria"
+      @guardarCategoria="guardarCategoria"
     />
   </div>
 </template>
