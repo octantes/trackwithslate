@@ -36,18 +36,24 @@ export default
     },
     guardarCategoria({ colKey, catKey, nombre, emoji })
     {
-      const key = colKey || 'custom'
       const cats = obtenerCategorias()
-      if (!cats[key]) cats[key] = {}
-      if (catKey !== nombre && cats[key][catKey])
+      const keyNuevo = colKey || 'custom'
+      const keyViejo = this.categoriaActual?.colKey || ''
+      if (keyViejo && keyViejo !== keyNuevo && cats[keyViejo] && cats[keyViejo][catKey])
       {
-        delete cats[key][catKey]
+        delete cats[keyViejo][catKey]
+        if (Object.keys(cats[keyViejo]).length === 0) delete cats[keyViejo]
       }
-      cats[key][nombre] = { nombre, emoji, vinculada: true }
-      editarCategoria(key, nombre, { nombre, emoji })
+      if (!cats[keyNuevo]) cats[keyNuevo] = {}
+      if (catKey !== nombre && cats[keyNuevo][catKey])
+      {
+        delete cats[keyNuevo][catKey]
+      }
+      cats[keyNuevo][nombre] = { nombre, emoji, vinculada: true }
+      editarCategoria(keyNuevo, nombre, { nombre, emoji })
       guardarCategorias(cats)
       this.vistaVolver()
-    }
+    },
   }
 }
 </script>
