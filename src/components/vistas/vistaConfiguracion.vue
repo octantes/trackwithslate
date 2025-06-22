@@ -1,59 +1,27 @@
 <script>
-import { obtenerOpciones } from '../funciones.js'
+import renglonArchivo from '../renglones/renglonArchivo.vue'
 import renglonVistas from '../renglones/renglonVistas.vue'
-import inputString from '../inputs/inputString.vue'
-import inputNumero from '../inputs/inputNumero.vue'
-import inputToggle from '../inputs/inputToggle.vue'
-import opcionesColumna from '../main/opcionesColumna.vue'
+import opcionesColumna from '../opciones/opcionesColumna.vue'
+import opcionesDesvinculadas from '../opciones/opcionesDesvinculadas.vue'
+import opcionesGenerales from '../opciones/opcionesGenerales.vue'
 export default
 {
   name: 'vistaconfiguracion',
-  emits: ['cambiarVista', 'cerrar'],
-  components: { inputString, inputNumero, opcionesColumna, inputToggle, renglonVistas },
-  watch:
-  {
-    opciones:
-    {
-      deep: true,
-      handler(nuevas) { localStorage.setItem('slateOpciones', JSON.stringify(nuevas)) },
-    }
-  },
-  data()
-  {
-    return {
-      opciones: { ...obtenerOpciones() }
-    }
-  },
+  emits: ['cambiarVista', 'cerrar', 'editarCategoria'],
+  components: { opcionesColumna, opcionesDesvinculadas, opcionesGenerales, renglonArchivo, renglonVistas },
 }
 </script>
 
 <template>
   <div class="display">
-
-    <opcionesColumna />
-
+    <renglonArchivo />
     <div class="divisor"></div>
-    
-    <div class="opciones">
-      <div class="opcion">
-        <div class="descripcion">simbolo de separacion del csv</div>
-        <inputString v-model="opciones.csvDelimitador" placeholder="delimitador csv" />
-      </div>
-      <div class="opcion">
-        <div class="descripcion">botones de categoria por columna</div>
-        <inputNumero v-model="opciones.limiteBotones" placeholder="botones x columna" />
-      </div>
-      <div class="opcion">
-        <div class="descripcion">entradas por página de la tabla</div>
-        <inputNumero v-model="opciones.limiteEntradas" placeholder="limite de entradas" />
-      </div>
-      <label class="opcion">
-        <span class="descripcion">sumar nuevos al inicio?</span>
-        <inputToggle v-model="opciones.sumarInicio" />
-      </label>
-    </div>
-
+    <opcionesColumna />
+    <div class="divisor"></div>
+    <opcionesGenerales />
+    <div class="divisor"></div>
+    <opcionesDesvinculadas @editarCategoria="$emit('editarCategoria', $event)" />
+    <div class="divisor"></div>
     <renglonVistas @cambiarVista="$emit('cambiarVista', $event)" />
-
   </div>
 </template>

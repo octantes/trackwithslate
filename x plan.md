@@ -25,6 +25,8 @@ Get-ChildItem -Recurse -Path src/components | Where-Object {
 
 . integrar el componente de columnas desvinculadas
 . las categorias custom por ahora no hacen nada
-- como era la creacion de categorias custom en mvp1? que hacian al clickearse?
 - antes se creaba un apartado "vincular a:" con un selector de las columnas existentes
 .las categorias de tipo numerico tienen max, deberia ser opcional y usarse sin max ni min en formulario
+.creacion de columnas nuevas
+
+el modo bulk delete deberia ser al filtrar por busqueda (buscar x y opcion para bulk delete al lado de la barra)
