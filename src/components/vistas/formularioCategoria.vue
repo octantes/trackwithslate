@@ -2,8 +2,8 @@
 import inputString from '../inputs/inputString.vue'
 import inputColor from '../inputs/inputColor.vue'
 import renglonAcciones from '../renglones/renglonAcciones.vue'
-
-export default {
+export default
+{
   name: 'formularioCategoria',
   emits: ['cerrar', 'editarCategoria', 'guardarCategoria'],
   components: { inputString, inputColor, renglonAcciones },

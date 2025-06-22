@@ -1,5 +1,5 @@
 <script>
-import { obtenerCategorias, obtenerOpciones } from '../funciones.js'
+import { obtenerCategorias, obtenerOpciones, guardarCategorias } from '../funciones.js'
 import botonCategoria from './botonCategoria.vue'
 export default
 {
@@ -7,9 +7,11 @@ export default
   components: { botonCategoria },
   emits: ['categoriaSeleccionada', 'editarCategoria', 'eliminarCategoria'],
   data() { return { categorias: {}, limiteBotones: 8, columnasGrid: 1 } },
-  created() { 
-    this.cargarCategorias(); const opts = obtenerOpciones()
-    this.limiteBotones = opts.limiteBotones || 8; this.actualizarColumnasGrid()
+  created()
+  {
+    const opts = obtenerOpciones()
+    this.limiteBotones = opts.limiteBotones || 8
+    this.cargarCategorias()
   },
   methods: {
     cargarCategorias()
@@ -33,10 +35,16 @@ export default
       if (!cat) return
       this.$emit('editarCategoria', { colKey, catKey, nombre: cat.nombre, emoji: cat.emoji })
     },
-    manejarEliminar(colKey, catKey) {
-      if (this.categorias[colKey]?.[catKey]) { this.categorias[colKey][catKey].vinculada = false }
-      this.$emit('eliminarCategoria', { columna: colKey, categoria: catKey })
-    }
+    manejarEliminar(colKey, catKey)
+    {
+      const cats = this.categorias
+      if (cats[colKey]?.[catKey])
+      {
+        cats[colKey][catKey].vinculada = false
+        guardarCategorias(cats)
+        this.cargarCategorias()
+      }
+    },
   },
   computed: {
     categoriasPlanas() { let arr = []

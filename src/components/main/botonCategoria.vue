@@ -1,7 +1,7 @@
 <script>
 export default
 {
-  name: 'botonCustomCategoria',
+  name: 'botonCategoria',
   emits: ['click', 'editarCategoria', 'eliminarCategoria'],
   props:
   {
