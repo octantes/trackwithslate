@@ -7,6 +7,8 @@ export default
   {
     modelValue: { type: Number, default: 0 },
     placeholder: { type: String, default: '' },
+    min: { type: Number, default: -Infinity },
+    max: { type: Number, default: Infinity },
   },
   computed:
   {
@@ -15,7 +17,7 @@ export default
       get() { return this.modelValue },
       set(nuevo)
       {
-        const n = Math.max(1, Math.min(100, Number(nuevo)))
+        const n = Math.max(this.min, Math.min(this.max, Number(nuevo)))
         this.$emit('update:modelValue', n)
       },
     },
@@ -24,5 +26,6 @@ export default
 </script>
 
 <template>
-  <input class="input" name="inputNumero" type="number"  v-model.number="valor" :placeholder="placeholder" min="1" max="100" />
+  <input class="input" name="inputNumero" type="number"  v-model.number="valor" :placeholder="placeholder" 
+  :min="min !== -Infinity ? min : undefined" :max="max !== Infinity ? max : undefined" />
 </template>

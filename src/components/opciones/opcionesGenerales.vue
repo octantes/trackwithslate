@@ -39,11 +39,11 @@ export default {
       </div>
       <div class="opcion">
         <div class="descripcion">botones de categoria por columna</div>
-        <inputNumero v-model="opciones.limiteBotones" placeholder="botones x columna" />
+        <inputNumero v-model="opciones.limiteBotones" :min="1" :max="100" placeholder="botones x columna" />
       </div>
       <div class="opcion">
         <div class="descripcion">entradas por página de la tabla</div>
-        <inputNumero v-model="opciones.limiteEntradas" placeholder="limite de entradas" />
+        <inputNumero v-model="opciones.limiteEntradas" :min="1" :max="100" placeholder="limite de entradas" />
       </div>
       <label class="opcion">
         <span class="descripcion">sumar nuevos al inicio?</span>

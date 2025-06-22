@@ -63,6 +63,24 @@ export default
       this.slateColumnas = obtenerColumnas()
       this.categoriaSeleccionada = nueva
     },
+    crearColumna()
+    {
+      const columnas = obtenerColumnas()
+      let i = 1
+      let key
+      do { key = `newColumn${i++}` }
+      while (columnas[key])
+      columnas[key] =
+      {
+        nombre: key,
+        tipo: 'texto',
+        width: 160,
+        esCategoria: false,
+      }
+      guardarColumnas(columnas)
+      this.slateColumnas = columnas
+      this.categoriaSeleccionada = key
+    },
   },
 }
 </script>
@@ -72,38 +90,39 @@ export default
     
     <div class="selector">
       <inputSelector v-model="categoriaSeleccionada" :opciones="Object.keys(slateColumnas)" placeholder="Columna" />
-      <button v-if="categoriaSeleccionada" class="inputTXT" @click="eliminarSeleccionada">eliminar columna</button>
+      <button class="inputTXT" @click="crearColumna">create new</button>
+      <button v-if="categoriaSeleccionada" class="inputTXT" @click="eliminarSeleccionada">delete</button>
     </div>
 
     <div v-if="categoriaSeleccionada" class="opcion">
-      <div class="descripcion">nombre</div>
+      <div class="descripcion">name</div>
       <inputString v-model="slateColumnas[categoriaSeleccionada].nombre" @blur="renombrarSeleccionada" />
     </div>
 
     <div v-if="categoriaSeleccionada" class="opcion">
-      <div class="descripcion">tipo</div>
+      <div class="descripcion">type</div>
       <inputSelector v-model="categoriaActual.tipo" :opciones="['texto', 'numero', 'fecha', 'toggle']" placeholder="elegí un tipo" />
     </div>
 
     <div v-if="categoriaSeleccionada" class="opcion">
-      <div class="descripcion">es una categoría?</div>
+      <div class="descripcion">set as category</div>
       <inputToggle :modelValue="categoriaActual.esCategoria" @update:modelValue="alternarCategoria" />
     </div>
 
     <div v-if="categoriaSeleccionada" class="opcion">
-      <div class="descripcion">width de la columna: {{ categoriaActual.width }} px</div>
+      <div class="descripcion">column width: {{ categoriaActual.width }} px</div>
       <inputRango v-model="categoriaActual.width" :min="50" :max="500" />
     </div>
 
     <div v-if="categoriaActual.tipo === 'fecha'" class="divisor"></div>
 
     <div v-if="categoriaActual.tipo === 'fecha'" class="opcion">
-      <div class="descripcion">formato de fecha</div>
+      <div class="descripcion">date format</div>
       <inputSelector v-model="categoriaActual.fechaFormato" :opciones="formatosFecha" placeholder="elegí un formato" />
     </div>
 
     <div v-if="categoriaActual.tipo === 'fecha'" class="opcion">
-      <div class="descripcion">fecha automática</div>
+      <div class="descripcion">auto-fill date</div>
       <inputToggle v-model="categoriaActual.fechaAutomatica" />
     </div>
     
