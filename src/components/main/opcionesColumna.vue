@@ -4,7 +4,27 @@ import inputRango from '../inputs/inputRango.vue'
 import inputString from '../inputs/inputString.vue'
 import inputSelector from '../inputs/inputSelector.vue'
 import inputToggle from '../inputs/inputToggle.vue'
-const formatosFecha = [ 'DD/MM/YYYY','MM/DD/YYYY','YYYY-MM-DD','DD-MM-YYYY','D-MMM-YYYY', 'YYYY/MM/DD','YYYY.MM.DD','Month DD, YYYY','DD Month, YYYY','Day DD Month YYYY' ]
+const formatosFecha = [
+  'DD/MM/YYYY',
+  'MM/DD/YYYY',
+  'YYYY-MM-DD',
+  'DD-MM-YYYY',
+  'D-MMM-YYYY',
+  'YYYY/MM/DD',
+  'YYYY.MM.DD',
+  'MMMM DD, YYYY',
+  'DD MMMM, YYYY',
+  'dddd D MMMM YYYY',
+  'YYYY-MM-DD HH:mm',
+  'DD/MM/YYYY HH:mm',
+  'YYYY-MM-DD hh:mm A',
+  'dddd D MMMM YYYY, HH:mm:ss',
+  'YYYY/MM/DD HH:mm:ss',
+  'DD-MM-YYYY hh:mm a',
+  'DD/MM/YYYY HH:mm:ss',
+  'YYYY-MM-DDTHH:mm:ss',
+  'YYYYMMDD_HHmmss',
+]
 export default
 {
   name: 'opcionesColumna',

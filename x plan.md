@@ -24,11 +24,7 @@ Get-ChildItem -Recurse -Path src/components | Where-Object {
 ---
 
 . integrar el componente de columnas desvinculadas
-- arreglar fecha automatica
-- tocar el boton de categoria debe abrir formulario entrada no formulario categoria
-- crear una nueva categoria la crea siempre en el mismo lugar en vez de acumularlas, siempre se sobre escribe
-
 . las categorias custom por ahora no hacen nada
 - como era la creacion de categorias custom en mvp1? que hacian al clickearse?
-
+- antes se creaba un apartado "vincular a:" con un selector de las columnas existentes
 .las categorias de tipo numerico tienen max, deberia ser opcional y usarse sin max ni min en formulario
