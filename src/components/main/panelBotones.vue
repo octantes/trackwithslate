@@ -19,10 +19,8 @@ export default
       this.categorias = obtenerCategorias() || {}
       this.actualizarColumnasGrid()
     },
-    manejarClick(colKey, catKey)
-    {
-      const entrada = { [colKey]: catKey }
-      this.$emit('categoriaSeleccionada', { datos: entrada })
+    manejarClick(colKey, catKey) {
+      this.$emit('categoriaSeleccionada', { colKey, catKey })
     },
     actualizarColumnasGrid()
     {

@@ -20,10 +20,10 @@ export default
   },
   methods:
   {
-    categoriaSeleccionada(payload)
+    categoriaSeleccionada({ colKey, catKey })
     {
-      this.$emit('seleccionarCategoria', payload)
-      this.$emit('cambiarVista', 'formularioCategoria')
+      this.$emit('seleccionarCategoria', { colKey, catKey })
+      this.$emit('cambiarVista', 'formularioRegistro')
     },
     editarCategoria(payload) {
       this.$emit('editarCategoria', payload)

@@ -9,7 +9,11 @@ export default
   name: 'formularioRegistro',
   emits: ['cerrar', 'editarEntrada'],
   components: { renglonAcciones, inputNumero, inputString, inputToggle },
-  props: { entrada: { type: Object, default: {} } },
+  props: 
+  {
+    entrada: { type: Object, default: {} },
+    categoria: { type: Object, default: {} },
+  },
   data()
   {
     const columnasObj = obtenerColumnas()
@@ -38,7 +42,14 @@ export default
       immediate: true,
       deep: true,
       handler(nueva) { this.inicializarValores(nueva) }
-    }
+    },
+   categoria: {
+     immediate: true,
+     handler(cat)
+     {
+       if (cat.colKey) { this.valores[cat.colKey] = cat.catKey }
+     }
+   },
   },
   methods:
   {
@@ -54,8 +65,8 @@ export default
       if (Object.keys(this.entrada).length === 0) { agregarRegistro(nuevoRegistro) }
       else { this.$emit('editarEntrada', nuevoRegistro) }
       this.$emit('cerrar')
-    }
-  }
+    },
+  },
 }
 </script>
 

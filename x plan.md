@@ -23,9 +23,12 @@ Get-ChildItem -Recurse -Path src/components | Where-Object {
 
 ---
 
-- desvincular columnas no anda
-. las columnas desvinculadas no deben renderizarse en panelBotones
-. tocar eliminar debe cambiar vinculada a false
 . integrar el componente de columnas desvinculadas
+- arreglar fecha automatica
 - tocar el boton de categoria debe abrir formulario entrada no formulario categoria
 - crear una nueva categoria la crea siempre en el mismo lugar en vez de acumularlas, siempre se sobre escribe
+
+. las categorias custom por ahora no hacen nada
+- como era la creacion de categorias custom en mvp1? que hacian al clickearse?
+
+.las categorias de tipo numerico tienen max, deberia ser opcional y usarse sin max ni min en formulario

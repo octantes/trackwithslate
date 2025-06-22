@@ -64,7 +64,7 @@ export default
       @cambiarVista="vistaActual = $event"
       @seleccionarRegistro="entradaActual = { ...$event.datos }"
       @editarEntrada="editarEntrada"
-      @seleccionarCategoria="categoriaActual = $event.datos"
+      @seleccionarCategoria="categoriaActual = $event"
       @editarCategoria="editarCategoria"
       @guardarCategoria="guardarCategoria"
     />
