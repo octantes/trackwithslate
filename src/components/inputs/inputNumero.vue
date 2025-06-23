@@ -6,7 +6,7 @@ export default
   props:
   {
     modelValue: { type: Number, default: 0 },
-    placeholder: { type: String, default: '' },
+    placeholder: { type: String, default: 'Insert number' },
     min: { type: Number, default: -Infinity },
     max: { type: Number, default: Infinity },
   },

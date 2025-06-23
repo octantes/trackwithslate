@@ -1,9 +1,9 @@
 <script>
+import { obtenerCategorias, guardarCategorias, guardarRegistros, obtenerOpciones } from '../funciones.js'
 import { ChevronDownIcon } from '@heroicons/vue/24/solid'
 import botonCategoria from '../main/botonCategoria.vue'
-import { obtenerCategorias, guardarCategorias, guardarRegistros, obtenerOpciones } from '../funciones.js'
-
-export default {
+export default
+{
   name: 'configDesvinculadas',
   components: { botonCategoria, ChevronDownIcon },
   emits: ['editarCategoria', 'eliminarCategoria'],
@@ -58,7 +58,7 @@ export default {
       })
     },
     emitirEliminar(cat) {
-      if (!confirm('¿eliminar categoría y registros asociados?')) return
+      if (!confirm('Delete this category and all associated entries?')) return
       const registros = JSON.parse(localStorage.getItem('slateRegistros') || '[]')
       const filtrados = registros.filter(r => r[cat.columna] !== cat.nombre)
       guardarRegistros(filtrados)
@@ -68,7 +68,7 @@ export default {
       guardarCategorias(this.categorias)
     },
     borrarTodas() {
-      if (!confirm('¿eliminar TODAS las categorías inactivas y sus registros asociados?')) return
+      if (!confirm('Delete ALL unlinked categories and all associated entries?')) return
       let registros = JSON.parse(localStorage.getItem('slateRegistros') || '[]')
       for (const cat of this.desvinculadas) {
         const { columna, nombre } = cat
@@ -85,15 +85,17 @@ export default {
 </script>
 
 <template>
+
+  <div class="tituloWrapper" @click="abierto = !abierto">
+    <div class="tituloToggle">Unlinked</div>
+    <ChevronDownIcon :class="['tituloArrow', { rotado: abierto }]"/>
+  </div>
+
   <div class="desvinculadas">
-    <div class="inputWrapper" @click="abierto = !abierto">
-      <div class="tituloToggle">Desvinculadas</div>
-      <ChevronDownIcon class="arrow"/>
-    </div>
 
     <template v-if="abierto">
       <div v-if="desvinculadas.length === 0" class="desvinculadasVacio">
-        no hay categorías inactivas
+        no inactive categories
       </div>
 
       <div v-else :style="estiloGrid">
@@ -109,8 +111,8 @@ export default {
       </div>
 
       <div v-if="desvinculadas.length > 0" class="desvinculadasAcciones">
-        <button class="inputTXT" @click="vincular()">re-vincular todas</button>
-        <button class="inputTXT" @click="borrarTodas()">borrar todas</button>
+        <button class="inputTXT" @click="vincular()">link all</button>
+        <button class="inputTXT" @click="borrarTodas()">delete all</button>
       </div>
     </template>
   </div>

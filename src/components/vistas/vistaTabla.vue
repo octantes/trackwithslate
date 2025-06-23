@@ -1,12 +1,13 @@
 <script>
 import { filtrarRegistros, obtenerRegistros, guardarRegistros, testIgualdad } from '../funciones.js'
+import renglonFormularios from '../renglones/renglonFormularios.vue'
 import renglonVistas from '../renglones/renglonVistas.vue'
 import inputBuscar from '../inputs/inputBuscar.vue'
 import csvTabla from '../main/csvTabla.vue'
 export default
 {
   name: 'vistaTabla',
-  components: { csvTabla, inputBuscar, renglonVistas },
+  components: { csvTabla, inputBuscar, renglonVistas, renglonFormularios },
   emits: ['cambiarVista', 'seleccionarRegistro'],
   data()
   {
@@ -45,10 +46,12 @@ export default
 
     <div class="renglon" style="gap: .5em; align-items: center;">
       <inputBuscar v-model="busqueda" />
-      <button class="inputTXT" v-if="busqueda && filtrados && filtrados.length" @click="bulkDelete" >delete</button>
+      <button class="inputTXT" v-if="busqueda && filtrados && filtrados.length" @click="bulkDelete" >Delete</button>
     </div>
 
     <csvTabla :filtrados="filtrados" @registroEliminado="filtrados = null" @editarEntrada="editarEntrada" />
+
+    <renglonFormularios @cambiarVista="$emit('cambiarVista', $event)" />
     <renglonVistas @cambiarVista="$emit('cambiarVista', $event)" />
     
   </div>

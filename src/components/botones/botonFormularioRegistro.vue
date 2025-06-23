@@ -9,7 +9,7 @@ export default
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="$emit('cambiarVista', 'formularioRegistro')">
+  <button type="button" class='botonUI' title="Create a new entry" @click="$emit('cambiarVista', 'formularioRegistro')">
     <PlusCircleIcon class="iconoUI" />
   </button>
 </template>

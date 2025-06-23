@@ -1,15 +1,15 @@
 <script>
-import { PlusCircleIcon } from '@heroicons/vue/24/solid'
+import { TagIcon } from '@heroicons/vue/24/solid'
 export default
 {
   name: 'botonFormularioCategoria',
-  components: { PlusCircleIcon },
+  components: { TagIcon },
   emits: ['cambiarVista'],
 }
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="$emit('cambiarVista', 'formularioCategoria')">
-    <PlusCircleIcon class="iconoUI" />
+  <button type="button" class='botonUI' title="Create a new category" @click="$emit('cambiarVista', 'formularioCategoria')">
+    <TagIcon class="iconoUI" />
   </button>
 </template>

@@ -9,7 +9,7 @@ export default
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="$emit('aceptar')">
+  <button type="button" class='botonUI' title="Accept changes" @click="$emit('aceptar')">
     <CheckIcon class="iconoUI" />
   </button>
 </template>

@@ -3,7 +3,7 @@ import { obtenerRegistros, obtenerColumnas, obtenerPagina, obtenerLimiteEntradas
 const parseVal = v => isNaN(v) ? v : parseFloat(v);
 export default
 {
-  name: 'csvtabla',
+  name: 'csvTabla',
   emits: ['editarEntrada', 'registroEliminado'],
   props:
   {
@@ -125,7 +125,7 @@ export default
             </td>
           </tr>
           <tr v-if="filasPaginadas.length === 0">
-            <td :colspan="columnas.length + 2">sin registros</td>
+            <td :colspan="columnas.length + 2">No entries</td>
           </tr>
         </tbody>
       </table>
@@ -147,6 +147,6 @@ th:hover { background: #3d3e3e; }
 .orden-indicador { position: absolute; right: 4px; }
 .accionesCAT { position: absolute; top: 50%; right: 0.5em; transform: translateY(-50%); display: flex; gap: 0.25em; }
 .iconoCAT { all: unset; cursor: pointer; font-size: 0.5rem; background: #1b1c1c99; border-radius: 4px; padding: .5em; display: flex; align-items: center; justify-content: center; }
-.tabla-nav { width: 1.25em; background: #1b1c1c; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.tabla-nav { width: 1.25em; background: #1b1c1c; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; }
 .tabla-nav:hover { background: #2b2c2c; }
 </style>

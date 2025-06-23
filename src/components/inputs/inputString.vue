@@ -6,7 +6,7 @@ export default
   props:
   {
     modelValue: { type: String, default: '' },
-    placeholder: { type: String, default: '' },
+    placeholder: { type: String, default: 'Insert text' },
   },
   computed:
   {

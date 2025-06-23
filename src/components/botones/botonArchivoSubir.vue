@@ -20,7 +20,7 @@ export default
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="buscarArchivo">
+  <button title="Upload an existing CSV file" type="button" class='botonUI' @click="buscarArchivo">
     <DocumentArrowUpIcon class="iconoUI" />
   </button>
   <input type="file" accept=".csv" ref="fileInput" @change="manejarArchivo" style="display: none;" />

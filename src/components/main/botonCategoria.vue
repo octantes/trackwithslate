@@ -6,7 +6,7 @@ export default
   props:
   {
     emoji: { type: String, default: '🔴' },
-    label: { type: String, default: 'categoria' },
+    label: { type: String, default: 'Category' },
   },
   data()
   {
@@ -17,7 +17,6 @@ export default
     mostrarAcciones() { return this.hover }
   },
 }
-
 </script>
 
 <template>

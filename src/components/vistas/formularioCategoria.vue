@@ -60,8 +60,8 @@ export default
 <template>
   <div class="formularioCategoria">
     <inputColor v-model="emoji" />
-    <inputString v-model="nombre" placeholder="nombre de categoría" />
-    <inputSelector :opciones="columnas" v-model="colKeyLocal" placeholder="vincular a" />
+    <inputString v-model="nombre" placeholder="Category name" />
+    <inputSelector :opciones="columnas" v-model="colKeyLocal" placeholder="Link to:" />
     <renglonAcciones @aceptar="aceptar" @cerrar="$emit('cerrar')" />
   </div>
 </template>

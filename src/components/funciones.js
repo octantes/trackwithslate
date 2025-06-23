@@ -20,7 +20,7 @@ export function toggleCategoria(key) { const columnas = obtenerColumnas()
     const regs = obtenerRegistros()
     const unicas = [...new Set(regs.map(r => r[key]).filter(v => v))]
     cats[key] = cats[key] || {}
-    unicas.forEach(name => { if (!cats[key][name]) { cats[key][name] = { nombre: name, emoji: '📁', vinculada: true }}})} else { delete cats[key] }
+    unicas.forEach(name => { if (!cats[key][name]) { cats[key][name] = { nombre: name, emoji: '🔴', vinculada: true }}})} else { delete cats[key] }
   guardarCategorias(cats)
   return { columnas, cats }
 }
@@ -51,7 +51,7 @@ export function agregarRegistro(registro) { const regs = obtenerRegistros(); reg
 // editar localstorage
 
 export function editarRegistro(index, cambios) { const regs = obtenerRegistros(), original = regs.at(index)
-  if (!original) { throw new Error('índice de registro inválido') }
+  if (!original) { throw new Error('Entry index not valid') }
   const actualizado = { ...original, ...cambios }
   regs.splice(index, 1, actualizado)
   guardarRegistros(regs)
@@ -108,7 +108,7 @@ export function renombrarCategoria(colKey, oldName, newName) {
 // eliminar localstorage
 
 export function eliminarRegistro(index) { const regs = obtenerRegistros()
-  if (index < 0 || index >= regs.length) { throw new Error('índice de registro inválido') }
+  if (index < 0 || index >= regs.length) { throw new Error('Entry index not valid') }
   regs.splice(index, 1)
   guardarRegistros(regs)
   return regs

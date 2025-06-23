@@ -9,7 +9,7 @@ export default
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="$emit('cerrar')">
+  <button type="button" class='botonUI' title="Close and forget changes" @click="$emit('cerrar')">
     <XMarkIcon class="iconoUI" />
   </button>
 </template>

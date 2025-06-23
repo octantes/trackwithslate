@@ -20,7 +20,7 @@ export default
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="buscarArchivo">
+  <button type="button" class='botonUI' title="Add another CSV file" @click="buscarArchivo">
     <DocumentPlusIcon class="iconoUI" />
   </button>
   <input type="file" accept=".csv" ref="fileInput" @change="manejarArchivo" style="display: none;"/>

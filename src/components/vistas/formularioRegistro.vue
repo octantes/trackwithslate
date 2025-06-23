@@ -26,23 +26,13 @@ export default
     {
       const d = new Date()
       const pad = n => String(n).padStart(2, '0')
-      const mapa =
-      {
-        DD:   pad(d.getDate()),
-        MM:   pad(d.getMonth() + 1),
+      const mapa = {
         YYYY: String(d.getFullYear()),
-        MMMM: d.toLocaleDateString('es-AR', { month: 'long' }),
-        MMM:  d.toLocaleDateString('es-AR', { month: 'short' }),
-        dddd: d.toLocaleDateString('es-AR', { weekday: 'long' }),
-        D:    String(d.getDate()),
-        HH:    pad(d.getHours()),
-        H:     String(d.getHours()),
-        hh:    pad(d.getHours() % 12 || 12),
-        h:     String(d.getHours() % 12 || 12),
-        mm:    pad(d.getMinutes()),
-        ss:    pad(d.getSeconds()),
-        A:     d.getHours() < 12 ? 'AM' : 'PM',
-        a:     d.getHours() < 12 ? 'am' : 'pm',
+        MM:   pad(d.getMonth() + 1),
+        DD:   pad(d.getDate()),
+        HH:   pad(d.getHours()),
+        mm:   pad(d.getMinutes()),
+        ss:   pad(d.getSeconds())
       }
       let res = formato
       for (const clave in mapa) { res = res.replace(clave, mapa[clave]) }

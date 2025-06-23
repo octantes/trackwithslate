@@ -9,7 +9,7 @@ export default
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="$emit('cambiarVista', 'vistaTabla')">
+  <button type="button" class='botonUI' title="Change to table view" @click="$emit('cambiarVista', 'vistaTabla')">
     <TableCellsIcon class="iconoUI" />
   </button>
 </template>

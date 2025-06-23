@@ -10,7 +10,7 @@ export default
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="csvBajar()">
+  <button title="Export your entries to CSV" type="button" class='botonUI' @click="csvBajar()">
     <DocumentArrowDownIcon class="iconoUI" />
   </button>
 </template>

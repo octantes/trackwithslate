@@ -9,7 +9,7 @@ export default
   {
     modelValue: { type: String, default: '' },
     opciones: { type: Array,  default: () => [] },
-    placeholder: { type: String, default: '' },
+    placeholder: { type: String, default: 'Select' },
   },
   computed:
   {

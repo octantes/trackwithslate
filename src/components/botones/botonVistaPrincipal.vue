@@ -9,7 +9,7 @@ export default
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="$emit('cambiarVista', 'vistaPrincipal')">
+  <button type="button" class='botonUI' title="Change to main view" @click="$emit('cambiarVista', 'vistaPrincipal')">
     <HomeIcon class="iconoUI" />
   </button>
 </template>

@@ -5,25 +5,25 @@ import inputString from '../inputs/inputString.vue'
 import inputSelector from '../inputs/inputSelector.vue'
 import inputToggle from '../inputs/inputToggle.vue'
 const formatosFecha = [
-  'DD/MM/YYYY',
-  'MM/DD/YYYY',
-  'YYYY-MM-DD',
-  'DD-MM-YYYY',
-  'D-MMM-YYYY',
   'YYYY/MM/DD',
-  'YYYY.MM.DD',
-  'MMMM DD, YYYY',
-  'DD MMMM, YYYY',
-  'dddd D MMMM YYYY',
+  'YYYY-MM-DD',
+  'MM/DD/YYYY',
+  'MM-DD-YYYY',
+  'DD/MM/YYYY',
+  'DD-MM-YYYY',
+  'YYYY/MM/DD HH:mm',
   'YYYY-MM-DD HH:mm',
+  'MM/DD/YYYY HH:mm',
+  'MM-DD-YYYY HH:mm',
   'DD/MM/YYYY HH:mm',
-  'YYYY-MM-DD hh:mm A',
-  'dddd D MMMM YYYY, HH:mm:ss',
+  'DD-MM-YYYY HH:mm',
   'YYYY/MM/DD HH:mm:ss',
-  'DD-MM-YYYY hh:mm a',
+  'YYYY-MM-DD HH:mm:ss',
+  'MM/DD/YYYY HH:mm:ss',
+  'MM-DD-YYYY HH:mm:ss',
   'DD/MM/YYYY HH:mm:ss',
+  'DD-MM-YYYY HH:mm:ss',
   'YYYY-MM-DDTHH:mm:ss',
-  'YYYYMMDD_HHmmss',
 ]
 export default
 {
@@ -87,48 +87,49 @@ export default
 </script>
 
 <template>
+
+  <div class="selector">
+    <inputSelector v-model="categoriaSeleccionada" :opciones="Object.keys(slateColumnas)" placeholder="Columns" />
+    <button class="inputTXT" @click="crearColumna">Create new</button>
+    <button v-if="categoriaSeleccionada" class="inputTXT" @click="eliminarSeleccionada">Delete</button>
+  </div>
+ 
   <div class="opciones">
-    
-    <div class="selector">
-      <inputSelector v-model="categoriaSeleccionada" :opciones="Object.keys(slateColumnas)" placeholder="Columna" />
-      <button class="inputTXT" @click="crearColumna">create new</button>
-      <button v-if="categoriaSeleccionada" class="inputTXT" @click="eliminarSeleccionada">delete</button>
-    </div>
 
     <div v-if="categoriaSeleccionada" class="opcion">
-      <div class="descripcion">name</div>
+      <div class="descripcion">Name</div>
       <inputString v-model="slateColumnas[categoriaSeleccionada].nombre" @blur="renombrarSeleccionada" />
     </div>
 
     <div v-if="categoriaSeleccionada" class="opcion">
-      <div class="descripcion">type</div>
+      <div class="descripcion">Type</div>
       <inputSelector v-model="categoriaActual.tipo" :opciones="['texto', 'numero', 'fecha', 'toggle']" placeholder="elegí un tipo" />
     </div>
 
     <div v-if="categoriaSeleccionada" class="opcion">
-      <div class="descripcion">hide column</div>
+      <div class="descripcion">Hide column</div>
       <inputToggle v-model="categoriaActual.escondida" />
     </div>
     
     <div v-if="categoriaSeleccionada" class="opcion">
-      <div class="descripcion">set as category</div>
+      <div class="descripcion">Set as category</div>
       <inputToggle :modelValue="categoriaActual.esCategoria" @update:modelValue="alternarCategoria" />
     </div>
 
     <div v-if="categoriaSeleccionada" class="opcion">
-      <div class="descripcion">column width: {{ categoriaActual.width }} px</div>
+      <div class="descripcion">Column width: {{ categoriaActual.width }} px</div>
       <inputRango v-model="categoriaActual.width" :min="50" :max="500" />
     </div>
 
     <div v-if="categoriaActual.tipo === 'fecha'" class="divisor"></div>
 
     <div v-if="categoriaActual.tipo === 'fecha'" class="opcion">
-      <div class="descripcion">date format</div>
+      <div class="descripcion">Date format</div>
       <inputSelector v-model="categoriaActual.fechaFormato" :opciones="formatosFecha" placeholder="elegí un formato" />
     </div>
 
     <div v-if="categoriaActual.tipo === 'fecha'" class="opcion">
-      <div class="descripcion">auto-fill date</div>
+      <div class="descripcion">Auto-fill date</div>
       <inputToggle v-model="categoriaActual.fechaAutomatica" />
     </div>
     

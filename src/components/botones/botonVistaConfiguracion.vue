@@ -9,7 +9,7 @@ export default
 </script>
 
 <template>
-  <button type="button" class='botonUI' @click="$emit('cambiarVista', 'vistaConfiguracion')">
+  <button type="button" class='botonUI' title="Change to config view" @click="$emit('cambiarVista', 'vistaConfiguracion')">
     <Cog6ToothIcon class="iconoUI" />
   </button>
 </template>
