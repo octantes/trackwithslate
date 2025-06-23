@@ -50,7 +50,7 @@
   border-color 0.2s;
 }
 .input:hover { background: var(--clarooscuro-d); }
-.input:focus { background: var(--clarooscuro-d); border-color: #4C9AFF; }
+.input:focus { background: var(--clarooscuro-d); border-color: #7ebdc4; }
 .inputWrapper { position: relative; display: inline-block; width: fit-content; }
 
 .arrow

@@ -30,27 +30,27 @@ export default
 
 <style scoped>
 .toggle {
-  width: 38px;
-  height: 20px;
+  width: 46px;
+  height: 24px;
   border-radius: 999px;
   background: #3c3c3c;
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 1.5px;
+  padding: 1.8px;
   transition: background 0.25s ease, border-color 0.25s ease;
   box-sizing: border-box;
 }
 .toggle .circulo {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: var(--claroscuro-f);
-  box-shadow: 0 0 3px rgba(0,0,0,0.3);
-  border: 1.5px solid var(--clarooscuro-b);
+  background: #d8dade;
+  box-shadow: 0 0 3.6px rgba(0, 0, 0, 0.3);
+  border: 1.8px solid #2b2c2c;
   transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
   will-change: transform;
 }
 .toggle.activo { background: #7ebdc4; border-color: #7ebdc4; }
-.toggle.activo .circulo { transform: translateX(17px); background: var(--clarooscuro-a); border-color: #7ebdc4; }
+.toggle.activo .circulo { transform: translateX(20px); background: #1b1c1c; border-color: #7ebdc4; }
 </style>

@@ -39,5 +39,5 @@ export default
   width:100%;
 }
 .inputBuscar:hover { background: #4d4c4c; }
-.inputBuscar:focus { background: #4d4c4c; border-color: #4C9AFF; outline: none; }
+.inputBuscar:focus { background: #4d4c4c; border-color: #7ebdc4; outline: none; }
 </style>
