@@ -20,7 +20,11 @@ export default
   computed:
   {
     filasPaginadas() { return obtenerPagina(this.registros, this.pagina, this.limite) },
-    columnas() { return Object.keys(this.columnasObj) },
+    columnas() {
+      return Object.entries(this.columnasObj)
+        .filter(([_, val]) => !val?.escondida)
+        .map(([key]) => key)
+    },
     limite() { return obtenerLimiteEntradas() },
     registrosBase()
     {

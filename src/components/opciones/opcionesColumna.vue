@@ -76,6 +76,7 @@ export default
         tipo: 'texto',
         width: 160,
         esCategoria: false,
+        escondida: false,
       }
       guardarColumnas(columnas)
       this.slateColumnas = columnas
@@ -104,6 +105,11 @@ export default
       <inputSelector v-model="categoriaActual.tipo" :opciones="['texto', 'numero', 'fecha', 'toggle']" placeholder="elegí un tipo" />
     </div>
 
+    <div v-if="categoriaSeleccionada" class="opcion">
+      <div class="descripcion">hide column</div>
+      <inputToggle v-model="categoriaActual.escondida" />
+    </div>
+    
     <div v-if="categoriaSeleccionada" class="opcion">
       <div class="descripcion">set as category</div>
       <inputToggle :modelValue="categoriaActual.esCategoria" @update:modelValue="alternarCategoria" />
