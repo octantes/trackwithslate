@@ -51,7 +51,7 @@ export default
   border: 1px solid #1b1c1c;
   border-radius: 8px;
   background: #3c3c3c;
-  color: #d8dade;
+  color: #d8dade 25%;
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.05s ease;
