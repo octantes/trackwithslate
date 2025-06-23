@@ -31,4 +31,6 @@ Always back up your data, specially if resetting browser settings or cache. Reme
 
 ---
 
+![P5](assets/slate.svg)
+
 *Designed with simplicity in mind, to keep the user in full control of their data and settings, with no intermediaries or external dependencies.*
