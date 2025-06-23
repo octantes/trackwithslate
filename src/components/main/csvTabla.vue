@@ -15,7 +15,7 @@ export default
   },
   watch:
   {
-    filtrados: { handler() { this.pagina = 0 }, immediate: true }
+    filtrados: { handler() { this.pagina = 0 }, immediate: true },
   },
   computed:
   {

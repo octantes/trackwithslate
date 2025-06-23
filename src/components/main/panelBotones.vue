@@ -57,10 +57,9 @@ export default
         display: 'grid',
         'grid-template-columns': `repeat(${this.columnasGrid}, 1fr)`,
         'grid-auto-rows': 'auto',
-        'max-height': `${this.limiteBotones * 40}px`,
         'overflow-y': 'auto',
         'gap': '.5em',
-        'width': '100%'
+        'width': '100%',
       }
     }
   }

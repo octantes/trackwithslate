@@ -28,7 +28,6 @@ export default
 
 <style scoped>
 .inputBuscar {
-  width: 100%;
   padding: .5em .8em;
   font-size: 1rem;
   border: 1px solid #1b1c1c;

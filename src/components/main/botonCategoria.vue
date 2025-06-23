@@ -40,12 +40,13 @@ export default
 .categoriaWrapper { position: relative; display: inline-block; }
 .botonCategoria
 {
+  height: 2.5em;
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
   gap: .5em;
-  padding: .5em .8em;
+  padding: 0 0.8em;
   overflow: hidden;
   border: 1px solid #1b1c1c;
   border-radius: 8px;

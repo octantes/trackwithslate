@@ -10,7 +10,15 @@ export default
   emits: ['cambiarVista', 'seleccionarRegistro'],
   data()
   {
-    return { filtrados: null }
+    return { busqueda: '', filtrados: null }
+  },
+  watch:
+  {
+    busqueda(nueva)
+    {
+      const resultado = filtrarRegistros(nueva)
+      this.filtrados = Array.isArray(resultado) ? resultado : null
+    },
   },
   methods:
   {
@@ -18,15 +26,15 @@ export default
     {
       this.$emit('cambiarVista', 'formularioRegistro')
       this.$emit('seleccionarRegistro', { datos })
-    }
-  }
+    },
+  },
 }
 </script>
 
 <template>
   <div class ="display">
 
-    <inputBuscar @buscar="filtrados = filtrarRegistros($event)" />
+    <inputBuscar v-model="busqueda" />
     <csvTabla :filtrados="filtrados" @registroEliminado="filtrados = null" @editarEntrada="editarEntrada" />
     <renglonVistas @cambiarVista="$emit('cambiarVista', $event)" />
     
