@@ -2,7 +2,7 @@
 
 slate is a fully client-side web application for flexible and personalized management of local tabular data. It allows you to create, edit, and organize records and categories without relying on any external servers or remote databases. All data is saved locally in your browser's storage, ensuring autonomy and privacy. You can download your data and take with you in a CSV file.
 
-![Portada](assets/portada.png)
+
 
 ## Features
 
