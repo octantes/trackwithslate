@@ -1,6 +1,7 @@
 # trackwithslate
 
-**slate** is a local tool for creating, organizing and exporting csv tabular data directly in your browser.  
+**slate** is a local tool for creating, organizing and exporting csv tabular data directly in your browser.
+
 No internet connection or installation required — just download the html file and it will open as a web page.
 
 Built for people who need a lightweight and local way to manage personal structured data without external dependencies. Ideal for those who prefer simplicity, privacy and control. Not for highly specific professional use but some edge-cases are covered.
