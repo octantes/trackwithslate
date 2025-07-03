@@ -20,7 +20,7 @@ All your data stays on your machine without accounts, servers or sync. Just reme
 * **Storage**: Everything is saved in-browser using the built in localstorage and can be easily exported.
 * **Field types**: Define columns with custom field types like text, number, date or boolean.
 
-WIP: Nested fields with sub-division symbols > Simple data visualization > Multiple databases
+**WIP**: Nested fields with sub-division symbols > Simple data visualization > Multiple databases
 
 Remember that **your data stays in the browser until you export it!** - back it up regularly if needed.
 
