@@ -1,38 +1,34 @@
 # trackwithslate
 
-slate is a fully client-side web application for flexible and personalized management of local tabular data. It allows you to create, edit, and organize records and categories without relying on any external servers or remote databases. All data is saved locally in your browser's storage, ensuring autonomy and privacy. You can download your data and take with you in a CSV file.
+**slate** is a local tool for creating, organizing and exporting csv tabular data directly in your browser.  
+No internet connection or installation required — just download the html file and it will open as a web page.
 
-![Portada](assets/portada.png)
+Built for people who need a lightweight and local way to manage personal structured data without external dependencies. Ideal for those who prefer simplicity, privacy and control. Not for highly specific professional use but some edge-cases are covered.
+
+All your data stays on your machine without accounts, servers or sync. Just remember to export frequently and before deleting browser data.
+
+![screenshot](assets/portada.png)
 
 ## Features
 
-* **Custom columns**: Define columns with custom types such as text, number, date, or toggle (boolean) fields.
-* **Record management**: Easily load, edit, and view records associated with your defined columns.
-* **Configurable dates**: Use custom date formats, with automatic date completion based on the selected format.
-* **Categorization**: Support for categories, including both linked (attached) and standalone categories.
-* **Local storage**: Stores all data in the browser’s localStorage, ensuring that your data is kept locally and privately.
-* **Bulk operations**: Simple interfaces for bulk editing and for selective or complete deletion of records and categories.
-* **Intuitive UI**: Optimized user interface controls like toggle switches, dropdown selectors, confirmation prompts for actions, and dynamic column management.
+**slate** is stable and functional, aimed at staying minimal: just open the latest html released and start working.
 
-## Who is it for?
+* **Import/export**: Bring and keep your data in a future proof plain text format (csv with any separator).
+* **Record editing**: View, modify and organize entries with ease, including bulk delete and fuzzy search.
+* **Autofill categories**: Tag any column as a category to create autofill buttons for every entry under it.
+* **Date formats**: Configurable date input with custom format selector and optional autofill with current date.
+* **Storage**: Everything is saved in-browser using the built in localstorage and can be easily exported.
+* **Field types**: Define columns with custom field types like text, number, date or boolean.
 
-TrackWithSlate is designed for users who need a powerful yet minimalist tool to manage personal data, lists, inventories, or any tabular dataset on their own terms. It is ideal for those who prioritize privacy and local control, and who prefer flexible configurations without the complexity or dependency of cloud-based solutions.
+WIP: Nested fields with sub-division symbols > Simple data visualization > Multiple databases
 
-## Technology
+Remember that **your data stays in the browser until you export it!** - back it up regularly if needed.
 
-* **Frontend**: Built with Vue 3 using modular, reusable components.
-* **Persistence**: Uses the browser’s localStorage for data persistence, with no backend server required.
-* **Dynamic handling**: Provides dynamic management of date formats, categories, and data fields to fit diverse use cases.
-
-## Status
-
-TrackWithSlate is in active development, focusing on a lean feature set, a clear user experience, and maximum autonomy for the user.
-Always back up your data, specially if resetting browser settings or cache. Remember, **your data is only on your browser until you download it**.
+Pro tip: *save as bookmark for easy access!*
 
 ---
-
 <p align="center">
+  <strong><em>designed with simplicity in mind, to keep you in control</em></strong>
+  <br><br>
   <img src="assets/slate.svg" width="120"/>
 </p>
-
-*Designed with simplicity in mind, to keep the user in full control of their data and settings, with no intermediaries or external dependencies.*
