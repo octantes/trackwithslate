@@ -12,13 +12,22 @@ export default
   mounted() { inicializarSlate() },
   data()
   {
-    return { vistaActual: 'vistaPrincipal', entradaActual: {}, categoriaActual: {} }
+    return { 
+      vistaActual: 'vistaPrincipal',
+      entradaActual: {},
+      categoriaActual: {},
+      vistaAnterior: null,
+    }
   },
   methods:
   {
-    vistaVolver()
-    {
-      this.vistaActual = 'vistaPrincipal'
+    vistaVolver() {
+      if (this.vistaAnterior) {
+        this.vistaActual = this.vistaAnterior
+        this.vistaAnterior = null
+      } else {
+        this.vistaActual = 'vistaPrincipal'
+      }
       this.entradaActual = {}
       this.categoriaActual = {}
     },
@@ -32,7 +41,7 @@ export default
     editarCategoria({ colKey, catKey, nombre, emoji })
     {
       this.categoriaActual = { colKey, catKey, nombre, emoji }
-      this.vistaActual = 'formularioCategoria'
+      this.cambiarVista('formularioCategoria')
     },
     guardarCategoria({ colKey, catKey, nombre, emoji })
     {
@@ -54,6 +63,10 @@ export default
       guardarCategorias(cats)
       this.vistaVolver()
     },
+    cambiarVista(nuevaVista) {
+      this.vistaAnterior = this.vistaActual
+      this.vistaActual = nuevaVista
+    },
   }
 }
 </script>
@@ -67,7 +80,7 @@ export default
       :colKey="categoriaActual.colKey"
       :catKey="categoriaActual.catKey"
       @cerrar="vistaVolver"
-      @cambiarVista="vistaActual = $event"
+      @cambiarVista="cambiarVista($event)"
       @seleccionarRegistro="entradaActual = { ...$event.datos }"
       @editarEntrada="editarEntrada"
       @seleccionarCategoria="categoriaActual = $event"
@@ -80,9 +93,10 @@ export default
 <style scoped>
 .contenedor
 {
-  display: inline-block;
-  padding: 2em;
+  display: flex;
+  padding: 1.5em;
   border-radius: 8px;
   background: #2b2c2c;
+  justify-content: center;
 }
 </style>

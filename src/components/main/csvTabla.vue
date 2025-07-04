@@ -48,7 +48,10 @@ export default
   },
   methods:
   {
-    colStyle(col) { return { width: (this.columnasObj[col]?.width || 160) + 'px' } },
+    colStyle(col) {
+      const width = (this.columnasObj[col]?.width || 160) + 'px'
+      return { width, maxWidth: width, minWidth: width }
+    },
     nextPage() { if ((this.pagina + 1) * this.limite < this.registros.length) this.pagina++ },
     prevPage() { if (this.pagina > 0) this.pagina-- },
     filaKey(fila) { return JSON.stringify(fila) },
@@ -141,9 +144,11 @@ export default
 .tabla-wrapper { display: flex; align-items: stretch; overflow: hidden; border-radius: 8px; background: #3c3c3c; }
 .tabla-container { flex: 1; overflow-x: auto; }
 table { border: 2px solid #1b1c1c; width: max-content; color: #d8dade; font-size: 0.9rem; }
-th, td { padding: 6px 12px; border: 1px solid #1b1c1c; text-align: left; background: #3c3c3c; color: #d8dade; }
+th, td { padding: 6px 12px; border: 1px solid #1b1c1c; text-align: left; background: #3c3c3c; color: #d8dade; word-break: break-word; white-space: normal; overflow: hidden; }
 th { background: #2b2c2c; cursor: pointer; position: relative; padding-right: 1.2em; }
 th:hover { background: #3d3e3e; }
+td { height: calc(2 * 1.5 * 0.9rem); max-height: calc(2 * 1.5 * 0.9rem); min-height: calc(2 * 1.5 * 0.9rem); vertical-align: middle; }
+td > span { display: -webkit-box; line-clamp: 2; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; }
 .orden-indicador { position: absolute; right: 4px; }
 .accionesCAT { position: absolute; top: 50%; right: 0.5em; transform: translateY(-50%); display: flex; gap: 0.25em; }
 .iconoCAT { all: unset; cursor: pointer; font-size: 0.5rem; background: #1b1c1c99; border-radius: 4px; padding: .5em; display: flex; align-items: center; justify-content: center; }

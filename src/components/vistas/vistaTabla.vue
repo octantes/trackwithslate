@@ -42,17 +42,19 @@ export default
 </script>
 
 <template>
+
   <div class ="display">
 
-    <div class="renglon" style="gap: .5em; align-items: center;">
+    <div class="renglon" style="gap: 1em; align-items: center;">
       <inputBuscar v-model="busqueda" />
       <button class="inputTXT" v-if="busqueda && filtrados && filtrados.length" @click="bulkDelete" >Delete</button>
+      <renglonFormularios @cambiarVista="$emit('cambiarVista', $event)" />
     </div>
 
     <csvTabla :filtrados="filtrados" @registroEliminado="filtrados = null" @editarEntrada="editarEntrada" />
 
-    <renglonFormularios @cambiarVista="$emit('cambiarVista', $event)" />
     <renglonVistas @cambiarVista="$emit('cambiarVista', $event)" />
     
   </div>
+
 </template>
