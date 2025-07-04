@@ -5,7 +5,7 @@ No internet connection or installation required — just download the html file 
 
 Built for people who need a lightweight and local way to manage personal structured data without external dependencies. Ideal for those who prefer simplicity, privacy and control. Not for highly specific professional use but some edge-cases are covered.
 
-All your data stays on your machine without accounts, servers or sync. Just remember to export frequently and before deleting browser data. Runs on everything with a semi-modern browser.
+All your data stays on your machine without accounts, servers or sync. Just remember to export frequently and before deleting browser data. 
 
 ![portada](assets/portada.png)
 
@@ -19,6 +19,7 @@ All your data stays on your machine without accounts, servers or sync. Just reme
 * **Date formats**: Configurable date input with custom format selector and optional autofill with current date.
 * **Storage**: Everything is saved in-browser using the built in localstorage and can be easily exported.
 * **Field types**: Define columns with custom field types like text, number, date or boolean.
+* **Hiper-light**: Compatible with virtually any modern browser, at just ~100KB.
 
 **WIP**: Nested fields with sub-division symbols > Simple data visualization > Multiple databases
 
