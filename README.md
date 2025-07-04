@@ -7,7 +7,7 @@ Built for people who need a lightweight and local way to manage personal structu
 
 All your data stays on your machine without accounts, servers or sync. Just remember to export frequently and before deleting browser data.
 
-![screenshot](assets/portada.png)
+![portada](assets/portada.png)
 
 ## Features
 
