@@ -19,7 +19,7 @@ All your data stays on your machine without accounts, servers or sync. Just reme
 * **Date formats**: Configurable date input with custom format selector and optional autofill with current date.
 * **Storage**: Everything is saved in-browser using the built in localstorage and can be easily exported.
 * **Field types**: Define columns with custom field types like text, number, date or boolean.
-* **Hiper-light**: Compatible with virtually any modern browser, at just ~100KB.
+* **Hiper-light**: Compatible with virtually any modern browser including mobile, at just ~100KB.
 
 **WIP**: Nested fields with sub-division symbols > Simple data visualization > Multiple databases
 
